@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fibra Fix SENTIA – Salud Digestiva Natural</title>
   <meta name="description" content="Fibra Fix SENTIA: la fórmula natural para mejorar tu digestión, reducir la inflamación y controlar tu peso. Con 18 ingredientes activos.">
-<!-- ✅ Preload imagen hero (LCP) — evita que el navegador la descubra tarde -->
+<!-- Precarga del fondo del encabezado (elemento LCP) -->
 <link rel="preload" as="image" fetchpriority="high"
-      href="./images/700e494d-2570-4b0c-9fb6-6d9bf1d94336_1789935632675.jpg"
-      imagesrcset="./images/700e494d-2570-4b0c-9fb6-6d9bf1d94336_1789935632675.jpg"
-      imagesizes="100vw">
+      href="./images/rn-image_picker_lib_temp_4dcd6159-f04c-45dc-83f0-436ba397d555_1789935118228.jpg">
 
 <style>
   /* Blindaje: fuerza el carrusel deslizable de beneficios en cualquier dispositivo tactil, */
@@ -66,8 +64,7 @@
   <!-- Fuentes: carga directa con display=swap para máxima compatibilidad con Shopify -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@600;700&family=Poppins:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@600;700&family=Poppins:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@600;700&family=Poppins:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap">
   <style>
     #sentia-fibrafix-landing,
     #sentia-fibrafix-landing * {
@@ -420,7 +417,7 @@
     <img id="product-jar-img"
          src="./images/700e494d-2570-4b0c-9fb6-6d9bf1d94336_1789935632675.jpg"
          alt="Producto Fibra Fix"
-         fetchpriority="high"
+         loading="lazy"
          decoding="async"
          width="800"
          height="1422"
