@@ -1792,7 +1792,7 @@
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];
     // La descarga de fbevents.js se difiere: carga con la primera interaccion
-    // (scroll, toque, clic, tecla) o, como maximo, a los 8 segundos.
+    // (scroll, toque, clic, tecla) o, como maximo, a los 4 segundos.
     // Los eventos fbq() de abajo quedan en cola y se envian al cargar.
     var cargado=false;
     function cargarPixel(){
@@ -1807,7 +1807,7 @@
     ['scroll','touchstart','pointerdown','mousemove','keydown'].forEach(function(ev){
       f.addEventListener(ev,cargarPixel,{passive:true,once:true});
     });
-    setTimeout(cargarPixel,8000);
+    setTimeout(cargarPixel,4000);
     }(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
