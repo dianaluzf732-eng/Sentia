@@ -1790,9 +1790,25 @@
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0]; // ✅ s[0] corregido
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    n.queue=[];
+    // La descarga de fbevents.js se difiere: carga con la primera interaccion
+    // (scroll, toque, clic, tecla) o, como maximo, a los 8 segundos.
+    // Los eventos fbq() de abajo quedan en cola y se envian al cargar.
+    var cargado=false;
+    function cargarPixel(){
+      if(cargado)return; cargado=true;
+      ['scroll','touchstart','pointerdown','mousemove','keydown'].forEach(function(ev){
+        f.removeEventListener(ev,cargarPixel,{passive:true});
+      });
+      t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }
+    ['scroll','touchstart','pointerdown','mousemove','keydown'].forEach(function(ev){
+      f.addEventListener(ev,cargarPixel,{passive:true,once:true});
+    });
+    setTimeout(cargarPixel,8000);
+    }(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
     fbq('set', 'autoConfig', 'false', '2901544716845838');
