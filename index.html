@@ -1139,6 +1139,10 @@
       </div>
 
       <form id="purchaseForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+        <div role="note" style="background:#fef2f2;border:2px solid #dc2626;border-radius:14px;padding:11px 14px;color:#b91c1c;font-size:.82rem;font-weight:700;line-height:1.4;text-align:center">
+          <span aria-hidden="true">&#9888;&#65039;</span> <strong style="font-weight:900">IMPORTANTE:</strong> Solo diligenciar el formulario si <strong style="font-weight:900">REALMENTE</strong> deseas recibir y pagar el producto, estamos incurriendo en gastos de transporte. &iexcl;Contamos con tu responsabilidad!
+        </div>
+
         
         <div>
           <label for="packageSelect" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
@@ -1416,10 +1420,10 @@
         Gracias por pedir <strong>Fibra Fix&reg;</strong> en la tienda <strong>SENTIA</strong>. Tus datos de env&iacute;o han sido registrados con &eacute;xito.
       </p>
 
-      <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-left my-4 text-xs space-y-1">
-        <p><strong class="text-slate-700">Cliente:</strong> <span id="modal-client-name">-</span></p>
-        <p><strong class="text-slate-700">Ciudad:</strong> <span id="modal-client-city">-</span></p>
-        <p><strong class="text-slate-700">Combo:</strong> <span id="modal-client-pack">-</span></p>
+      <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-left my-4 text-xs space-y-1 text-slate-900 font-semibold">
+        <p><strong class="text-slate-700">Cliente:</strong> <span id="modal-client-name" style="color:#0f172a">-</span></p>
+        <p><strong class="text-slate-700">Ciudad:</strong> <span id="modal-client-city" style="color:#0f172a">-</span></p>
+        <p><strong class="text-slate-700">Combo:</strong> <span id="modal-client-pack" style="color:#0f172a">-</span></p>
       </div>
 
       <p class="text-xs text-amber-900 bg-amber-50 p-3 rounded-xl mb-5 font-medium border border-amber-200">
