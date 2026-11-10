@@ -1054,9 +1054,9 @@ const offersData = {
 
     name: "INICIACIÓN",
 
-    price: 79900,
+    price: 79000,
 
-    formattedPrice: "$79.900",
+    formattedPrice: "$79.000",
 
     image: "images/oferta1.webp",
 
@@ -1068,9 +1068,7 @@ const offersData = {
 
       "Acceso plataforma acompañamiento Método Fibra Fix 21 Días (Acompañamiento, retos, menús, despensa inteligente y más)",
 
-      "Acceso a bono de $10.000 para próximas compras de 1 unidad (Completando método 21 días)",
 
-      "Acceso a 1 Fibra Fix gratis para próximas compras de 2 o más unidades (Completando método 21 días)",
 
       "Acceso a Club de Fibra Fix Referidos (Bonos por referidos)",
 
@@ -1086,9 +1084,9 @@ const offersData = {
 
     name: "AVANZADO",
 
-    price: 114900,
+    price: 114000,
 
-    formattedPrice: "$114.900",
+    formattedPrice: "$114.000",
 
     image: "images/oferta2.webp",
 
@@ -1120,9 +1118,9 @@ const offersData = {
 
     name: "TRATAMIENTO COMPLETO",
 
-    price: 143900,
+    price: 143000,
 
-    formattedPrice: "$143.900",
+    formattedPrice: "$143.000",
 
     image: "images/oferta3.webp",
 
