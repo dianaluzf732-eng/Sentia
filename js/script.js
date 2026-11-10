@@ -1444,7 +1444,7 @@ if (checkoutForm) {
       id_evento: ID_PEDIDO,
       fbp,
       fbc,
-      estado: "Divine",
+      estado: "Pendiente",
       tienda: TIENDA,
     });
 
