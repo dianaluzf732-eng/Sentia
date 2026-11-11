@@ -1694,8 +1694,8 @@
       if (isPopupSilentHour()) {
         return msUntilNextActiveWindow();
       }
-      // 7am - 10pm: cada 3, 4 o 6 minutos, al azar
-      const minutesOptions = [3, 4, 6];
+      // 7am - 10pm: cada 1 o 2 minutos, al azar
+      const minutesOptions = [1, 2];
       const minutes = minutesOptions[Math.floor(Math.random() * minutesOptions.length)];
       return minutes * 60 * 1000;
     }
