@@ -133,13 +133,39 @@
       transform-origin: center;
     }
     .gradient-hero {
-      background-color: #0b2013;
-      background: radial-gradient(ellipse at center, rgba(2, 44, 34, 0.85) 0%, rgba(2, 44, 34, 0.68) 45%, rgba(2, 44, 34, 0.5) 100%),
-                  linear-gradient(135deg, rgba(6, 78, 59, 0.35) 0%, rgba(2, 44, 34, 0.4) 100%),
+      background-color: #065f46;
+      background: radial-gradient(ellipse at center, rgba(6, 78, 59, 0.62) 0%, rgba(6, 78, 59, 0.48) 45%, rgba(6, 78, 59, 0.34) 100%),
+                  linear-gradient(135deg, rgba(6, 78, 59, 0.22) 0%, rgba(2, 44, 34, 0.3) 100%),
                   url('./images/hero.webp') center/cover no-repeat;
     }
-    .gradient-hero{background-color:#0b2013}
+    .gradient-hero h1, .gradient-hero p, .gradient-hero span { text-shadow: 0 2px 10px rgba(2, 44, 34, 0.55); }
+    .gradient-hero{background-color:#065f46}
     .cv-auto{content-visibility:auto;contain-intrinsic-size:auto 900px}
+    .delivery-card { padding: 10px 12px !important; }
+    .delivery-card > div:first-of-type { margin-bottom: 6px !important; }
+    .delivery-card .w-10 { width: 32px !important; height: 32px !important; }
+    @media (max-width: 639px) { .delivery-card .ff-desc { display: none; } }
+    /* ===== Ofertas: letra más grande ===== */
+    #pricing h3 { font-size: 1.55rem; line-height: 1.2; }
+    #pricing span.text-xs { font-size: .82rem; }
+    #pricing p.text-xs { font-size: .88rem; }
+    #pricing .mb-3 > span.font-black { font-size: 2.5rem; line-height: 1.1; }
+    #pricing ul { font-size: .98rem; line-height: 1.45; }
+    #pricing button { font-size: .98rem; }
+    /* ===== Marco animado para la oferta de 3 tarros ===== */
+    @property --ff-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    @keyframes ff-spin { to { --ff-a: 360deg; } }
+    .ff-glow-card {
+      border: 4px solid transparent !important;
+      background:
+        linear-gradient(180deg, #ffffff, #fffbeb) padding-box,
+        conic-gradient(from var(--ff-a), #f59e0b, #10b981, #0f766e, #fde047, #f59e0b) border-box !important;
+      box-shadow: 0 0 22px rgba(245,158,11,.4), 0 18px 40px -14px rgba(4,120,87,.5);
+      animation: ff-spin 5s linear infinite;
+      animation-play-state: paused;
+    }
+    .ff-glow-card.ff-on { animation-play-state: running; }
+    @media (prefers-reduced-motion: reduce) { .ff-glow-card { animation: none; } }
     .glass-card {
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(12px);
@@ -180,6 +206,22 @@
       transform: scale(0.85);
       opacity: 0.55;
     }
+    .symptom-viewport { position: relative; }
+    #symptomsTrack { cursor: grab; user-select: none; -webkit-user-select: none; outline: none; padding-top: 16px; padding-bottom: 16px; }
+    #symptomsTrack.is-dragging { cursor: grabbing; }
+    #symptomsTrack img { pointer-events: none; }
+    .symptom-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
+      width: 42px; height: 42px; border-radius: 9999px; border: 1px solid #e2e8f0;
+      background: rgba(255,255,255,.95); color: #047857; font-size: 26px; line-height: 1;
+      display: flex; align-items: center; justify-content: center; padding-bottom: 3px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.15); cursor: pointer; transition: transform .2s, background .2s;
+    }
+    .symptom-arrow:hover { background: #ecfdf5; transform: translateY(-50%) scale(1.08); }
+    .symptom-arrow-prev { left: 4px; }
+    .symptom-arrow-next { right: 4px; }
+    @media (min-width: 640px) { .symptom-arrow-prev { left: calc(50% - 300px); } .symptom-arrow-next { right: calc(50% - 300px); } }
+    .symptom-dot { cursor: pointer; }
     .symptom-stack-card.active {
       transform: scale(1.08);
       opacity: 1;
@@ -329,15 +371,15 @@
       </div>
 
       <h1 class="font-display text-2xl sm:text-3xl font-bold leading-snug tracking-tight text-amber-400">
-        &iquest;Sientes tu abdomen abultado , <span class="text-emerald-400">hinchado y con malestar todo el d&iacute;a </span>? &#129763;
+        &iquest;Sientes tu abdomen abultado, <span class="text-emerald-400">hinchado y con malestar todo el d&iacute;a</span>? &#129763;
       </h1>
 
       <p class="text-white/90 text-sm sm:text-base leading-relaxed">
-        Restaura tu tr&aacute;nsito intestinal, deshincha tu abdomen de forma natural,protege tu colon y devuelvele su bienestar y evita peores consecuencias desde la primera semana con <strong class="text-emerald-400">Fibra Fix&reg;</strong>. Sin c&oacute;licos ni laxantes irritantes.
+        Restaura tu tr&aacute;nsito intestinal, deshincha tu abdomen de forma natural, protege tu colon y devu&eacute;lvele su bienestar y evita peores consecuencias desde la primera semana con <strong class="text-emerald-400">Fibra Fix&reg;</strong>. Sin c&oacute;licos ni laxantes irritantes.
       </p>
 
       <p class="text-white/80 text-sm leading-relaxed">
-        Suplemento natural ideal para <strong class="text-white">colon irritable, h&iacute;gado graso, colesterol alto, gastritis, estre&ntilde;imiento cr&oacute;nico,hemorroides</strong> o si tienes <strong class="text-white">dificultad para bajar de peso</strong>.
+        Suplemento natural ideal para <strong class="text-white">colon irritable, h&iacute;gado graso, colesterol alto, gastritis, estre&ntilde;imiento cr&oacute;nico, hemorroides</strong> o si tienes <strong class="text-white">dificultad para bajar de peso</strong>.
       </p>
 
       <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-xs sm:text-sm text-white w-full max-w-xs mx-auto text-left">
@@ -380,15 +422,18 @@
         &#128680; &iquest;Te Identificas Con Esto?
       </span>
       <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 mt-4 leading-tight">
-        Señales de que tu cuerpo necesita limpieza natural hoy mismo
+        Señales de que tu cuerpo necesita limpieza natural urgente
       </h2>
       <p class="text-slate-600 text-xs sm:text-sm mt-2 max-w-xs mx-auto">
         Acumular desechos en el tracto digestivo desarrolla molestias en varias partes del cuerpo y baja energ&iacute;a diariamente.
       </p>
     </div>
 
-    <div class="relative">
-      <div id="symptomsTrack" class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth" style="padding-left: calc(50% - 130px); padding-right: calc(50% - 130px);">
+    <div class="relative" role="region" aria-roledescription="carrusel" aria-label="Señales de que tu cuerpo necesita limpieza">
+      <div class="symptom-viewport">
+      <button type="button" id="symptomPrev" class="symptom-arrow symptom-arrow-prev" aria-label="Señal anterior">&#8249;</button>
+      <button type="button" id="symptomNext" class="symptom-arrow symptom-arrow-next" aria-label="Señal siguiente">&#8250;</button>
+      <div id="symptomsTrack" tabindex="0" class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth" style="padding-left: calc(50% - 130px); padding-right: calc(50% - 130px);">
         <div class="symptom-stack-card snap-center shrink-0 w-[260px] p-6 rounded-2xl border border-slate-200 shadow-lg bg-white space-y-3 text-left">
           <div class="w-14 h-14 rounded-xl flex items-center justify-center text-xl" style="background:#fee2e2; color:#dc2626;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm-32 224a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg></div>
           <h3 class="font-black text-slate-900 text-lg">Hinchaz&oacute;n Abdominal</h3>
@@ -410,6 +455,7 @@
           <p class="text-sm text-slate-600 leading-relaxed">Un colon sobrecargado absorbe mal las vitaminas y nutrientes, dej&aacute;ndote sin energ&iacute;a vital.</p>
         </div>
       </div>
+      </div>
       <div class="flex justify-center gap-2 mt-5" id="symptomDots">
         <span class="symptom-dot h-2 rounded-full transition-all duration-500 bg-slate-300"></span>
         <span class="symptom-dot h-2 rounded-full transition-all duration-500 bg-slate-300"></span>
@@ -423,7 +469,7 @@
         <span class="inline-block bg-rose-600 text-white text-xs sm:text-sm font-black px-4 py-2.5 rounded-lg shadow-lg animate-badge-blink">&#9888;&#65039; EVITA LOS LAXANTES IRRITANTES</span>
       </div>
       <p class="text-sm sm:text-base leading-relaxed text-slate-700 font-medium">
-        En vez de forzar tu cuerpo con quimicos para el estreñimiento n&uacute;trelo con <strong class="text-emerald-700">fibra soluble, insoluble, prebi&oacute;ticos y probi&oacute;ticos</strong> que restauran tu microbiota de forma natural, desde la primera semana.
+        En vez de forzar tu cuerpo, n&uacute;trelo con <strong class="text-emerald-700">fibra soluble, insoluble, prebi&oacute;ticos y probi&oacute;ticos</strong> que restauran tu microbiota de forma natural, desde la primera semana.
       </p>
     </div>
   </section>
@@ -446,72 +492,133 @@
   </div>
 
   <script>
-    const symptomsTrack = document.getElementById('symptomsTrack');
-    const symptomCards = symptomsTrack ? Array.from(symptomsTrack.querySelectorAll('.symptom-stack-card')) : [];
-    const symptomDots = document.querySelectorAll('#symptomDots .symptom-dot');
-    const symptomBorders = ['#ef4444', '#f59e0b', '#f97316', '#a855f7'];
-    let symptomIdx = 0;
-    let symptomsUserScrolling = false;
+    (function () {
+      const track = document.getElementById('symptomsTrack');
+      if (!track) return;
+      const cards = Array.from(track.querySelectorAll('.symptom-stack-card'));
+      const dots = Array.from(document.querySelectorAll('#symptomDots .symptom-dot'));
+      const prevBtn = document.getElementById('symptomPrev');
+      const nextBtn = document.getElementById('symptomNext');
+      const colors = ['#ef4444', '#f59e0b', '#f97316', '#a855f7'];
+      const n = cards.length;
+      const DELAY = 3500;          // tiempo entre tarjetas (automático)
+      const RESUME = 5000;         // tras tocar/arrastrar, reanuda a los 5 s
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let idx = 0, timer = null, resumeT = null, inView = true, hold = false, raf = null;
 
-    function goToSymptom(i) {
-      symptomIdx = i;
-      const card = symptomCards[i];
-      if (!card || !symptomsTrack) return;
-      const target = card.offsetLeft - (symptomsTrack.clientWidth / 2 - card.clientWidth / 2);
-      symptomsTrack.scrollTo({ left: target, behavior: 'smooth' });
-    }
+      const targetLeft = i => cards[i].offsetLeft - (track.clientWidth - cards[i].offsetWidth) / 2;
 
-    function setActiveSymptom(i) {
-      symptomCards.forEach((c, idx) => c.classList.toggle('active', idx === i));
-      symptomDots.forEach((d, idx) => {
-        d.style.width = idx === i ? '28px' : '8px';
-        d.style.background = idx === i ? symptomBorders[i] : '#cbd5e1';
-      });
-    }
-
-    if (symptomsTrack && symptomCards.length) {
-      setActiveSymptom(0);
-      const symptomsObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
-            const idx = symptomCards.indexOf(entry.target);
-            if (idx !== -1) { symptomIdx = idx; setActiveSymptom(idx); }
-          }
+      function setActive(i) {
+        idx = i;
+        cards.forEach((c, k) => c.classList.toggle('active', k === i));
+        dots.forEach((d, k) => {
+          d.style.width = k === i ? '28px' : '8px';
+          d.style.background = k === i ? colors[i % colors.length] : '#cbd5e1';
         });
-      }, { root: symptomsTrack, threshold: [0.6] });
-      symptomCards.forEach(c => symptomsObs.observe(c));
+      }
+      function go(i, smooth) {
+        i = (i + n) % n;
+        setActive(i);
+        track.scrollTo({ left: targetLeft(i), behavior: smooth === false ? 'auto' : 'smooth' });
+      }
+      // Detecta la tarjeta más cercana al centro (sirve para swipe, arrastre y flechas)
+      function syncFromScroll() {
+        raf = null;
+        const mid = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, dist = Infinity;
+        cards.forEach((c, k) => {
+          const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+          if (d < dist) { dist = d; best = k; }
+        });
+        if (best !== idx) setActive(best);
+      }
+      track.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(syncFromScroll); }, { passive: true });
 
-      symptomsTrack.addEventListener('scroll', () => {
-        symptomsUserScrolling = true;
-        clearTimeout(symptomsTrack._resumeTimer);
-        symptomsTrack._resumeTimer = setTimeout(() => { symptomsUserScrolling = false; }, 4000);
+      // Autoplay (solo se pausa por interacción real del usuario, no por el scroll programático)
+      function stop() { clearInterval(timer); timer = null; }
+      function start() {
+        stop();
+        if (reduceMotion || n < 2) return;
+        timer = setInterval(() => { if (!hold && inView && !document.hidden) go(idx + 1); }, DELAY);
+      }
+      function userTouched() {
+        hold = true;
+        clearTimeout(resumeT);
+        resumeT = setTimeout(() => { hold = false; }, RESUME);
+      }
+      ['touchstart', 'wheel', 'keydown'].forEach(ev => track.addEventListener(ev, userTouched, { passive: true }));
+      track.addEventListener('mouseenter', () => { clearTimeout(resumeT); hold = true; });
+      track.addEventListener('mouseleave', () => { clearTimeout(resumeT); resumeT = setTimeout(() => { hold = false; }, 800); });
+
+      // Controles manuales
+      prevBtn && prevBtn.addEventListener('click', () => { userTouched(); go(idx - 1); });
+      nextBtn && nextBtn.addEventListener('click', () => { userTouched(); go(idx + 1); });
+      dots.forEach((d, k) => {
+        d.setAttribute('role', 'button');
+        d.setAttribute('aria-label', 'Ir a la señal ' + (k + 1));
+        d.addEventListener('click', () => { userTouched(); go(k); });
+      });
+      track.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
       });
 
-      setInterval(() => {
-        if (symptomsUserScrolling) return;
-        symptomIdx = (symptomIdx + 1) % symptomCards.length;
-        goToSymptom(symptomIdx);
-      }, 3200);
-    }
+      // Arrastre con el mouse en escritorio (en celular el swipe ya funciona)
+      let drag = false, startX = 0, startLeft = 0, moved = 0;
+      track.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        drag = true; moved = 0; startX = e.clientX; startLeft = track.scrollLeft;
+        track.classList.add('is-dragging');
+        track.style.scrollSnapType = 'none';
+        track.style.scrollBehavior = 'auto';
+        userTouched();
+      });
+      window.addEventListener('pointermove', e => {
+        if (!drag) return;
+        moved = e.clientX - startX;
+        track.scrollLeft = startLeft - moved;
+      });
+      window.addEventListener('pointerup', () => {
+        if (!drag) return;
+        drag = false;
+        track.classList.remove('is-dragging');
+        track.style.scrollSnapType = '';
+        track.style.scrollBehavior = '';
+        syncFromScroll();
+        go(idx);
+        userTouched();
+      });
+
+      // Solo avanza cuando la sección está visible
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(en => { inView = en[0].isIntersecting; }, { threshold: 0.3 }).observe(track);
+      }
+      window.addEventListener('resize', () => go(idx, false));
+
+      setActive(0);
+      start();
+    })();
   </script>
 
-  <!-- Interactive Ingredients Section -->
+  <!-- INVIMA (fondo claro, fuera de la sección verde) -->
+  <div class="w-full" style="background:#dff3e7;padding:40px 16px 0;">
+    <div class="flex flex-col items-center justify-center gap-3 text-center mx-auto"
+             style="max-width:520px;padding:24px 18px;background:linear-gradient(180deg,#ecfdf5 0%,#dff3e7 100%);border:3px solid #047857;border-radius:22px;box-shadow:0 0 0 5px rgba(255,255,255,.5),0 14px 30px -14px rgba(6,78,59,.45);">
+          <div class="text-[11px] font-black tracking-wider uppercase inline-block" style="color:#064e3b;background:linear-gradient(180deg, transparent 40%, rgba(251,191,36,0.6) 40%); padding:0 4px;">
+            REGISTRO SANITARIO INVIMA
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black tracking-wide" style="color:#064e3b;">RSA-0020303-2022</h3>
+          <p class="text-xs sm:text-sm font-bold" style="color:#92400e;">Elaborado por Laboratorios Nutrimed en Bucaramanga, Santander</p>
+          <p class="text-xs font-semibold" style="color:#047857;">Fórmula natural premium</p>
+        </div>
+  </div>
+<!-- Interactive Ingredients Section -->
   <!-- Sección INVIMA + Ingredientes unificada -->
-  <div id="sectionRoot" class="w-full relative isolate overflow-hidden animated-gradient-bg px-4" style="background-image: linear-gradient(120deg, #047857, #0f766e, #065f46, #b45309);">
+  <div id="sectionRoot" class="w-full relative isolate overflow-hidden px-4" style="background:#dff3e7;padding-bottom:24px;">
     <div class="max-w-6xl mx-auto">
 
-      <!-- INVIMA -->
-      <div class="flex flex-col items-center justify-center gap-3 text-center pt-16 pb-6 px-4">
-        <div class="text-white text-[11px] font-black tracking-wider uppercase inline-block" style="background:linear-gradient(180deg, transparent 40%, rgba(251,191,36,0.55) 40%); padding:0 4px;">
-          REGISTRO SANITARIO INVIMA
-        </div>
-        <h3 class="text-2xl sm:text-3xl font-black text-white tracking-wide drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]">RSA-0020303-2022</h3>
-        <p class="text-amber-300 text-xs sm:text-sm font-bold drop-shadow-[0_0_10px_rgba(252,211,77,0.4)]">Elaborado por Laboratorios Nutrimed en Bucaramanga, Santander</p>
-        <p class="text-emerald-200 text-xs font-semibold">Fórmula natural premium</p>
-      </div>
-
       <!-- Ingredientes colapsables -->
-      <div class="text-center max-w-xl mx-auto relative z-30 pt-8 pb-10">
+      <div class="text-center max-w-xl mx-auto relative z-30 pb-10" style="padding-top:40px;">
         <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;">
           <button onclick="toggleGrid()" id="fireBtn" class="bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-600 hover:via-emerald-700 hover:to-teal-700 text-white font-black text-sm px-8 py-3 rounded-xl shadow-lg border-2 border-amber-200 transition-all hover:scale-105 uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer relative z-40">
             <span id="btnIcon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="display:inline-block;width:0.85em;height:0.85em;vertical-align:-0.125em"><path d="M0 192c0-17.7 14.3-32 32-32H64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zm320-96c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H352c-17.7 0-32-14.3-32-32zM224 0c13.3 0 24 10.7 24 24V48h24c66.3 0 120 53.7 120 120v16c0 8.8-7.2 16-16 16H248v16c0 8.8-7.2 16-16 16H200c-8.8 0-16-7.2-16-16V200H72c-8.8 0-16-7.2-16-16V168C56 101.7 109.7 48 176 48h24V24c0-13.3 10.7-24 24-24zM80 288H368c8.8 0 16 7.2 16 16v16c0 61.9-43.9 113.5-102.4 125.2L298.7 480c4.1 8.3 .7 18.3-7.7 22.4s-18.3 .7-22.4-7.7L240 448H208l-28.7 46.6c-4.1 8.3-14 11.7-22.4 7.7s-11.7-14-7.7-22.4l17.1-34.8C108.9 433.5 64 381.9 64 320V304c0-8.8 7.2-16 16-16z"/></svg></span>
@@ -532,7 +639,7 @@
 
 
   <!-- Benefits Section -->
-  <div class="w-full h-8 sm:h-12" style="background-image: linear-gradient(to bottom, rgba(223,243,231,0) 0%, rgba(223,243,231,0) 12%, #dff3e7 85%, #dff3e7 100%), linear-gradient(120deg, #047857, #0f766e, #065f46, #b45309);"></div>
+  <div class="w-full h-8 sm:h-12" style="background:linear-gradient(to bottom,#dff3e7 0%,#ecfdf5 100%);"></div>
   <div class="benefits-bg cv-auto">
   <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 relative" id="beneficios">
     <div class="text-center max-w-3xl mx-auto mb-10">
@@ -545,30 +652,6 @@
       <p class="text-slate-700 text-sm sm:text-base mt-3 leading-relaxed">
         Descubre c&oacute;mo la acci&oacute;n sin&eacute;rgica de fibras vegetales, superalimentos y probi&oacute;ticos trabaja en 4 &aacute;reas fundamentales de tu organismo.
       </p>
-    </div>
-
-    <!-- Filter Tabs -->
-    <div class="flex sm:flex-wrap justify-start sm:justify-center items-center gap-1.5 sm:gap-2 mb-6 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-      <button onclick="filterBenefits('all', this)" class="benefit-tab active-tab flex-shrink-0 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-extrabold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full shadow-md transition-all flex items-center gap-1.5 border border-transparent">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="text-[10px]" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 0h448v448H0V0zm32 224v192h192V224H32zm224 0v192h160V224H256zM32 32v160h160V32H32zm224 0v160h160V32H256z"/></svg>
-        <span>Todos (18)</span>
-      </button>
-      <button onclick="filterBenefits('digestion', this)" class="benefit-tab flex-shrink-0 bg-white text-slate-700 hover:bg-emerald-50 font-bold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm transition-all flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="text-emerald-600 text-[10px]" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M224 0c17.7 0 32 14.3 32 32V49.1C327 66.5 384 132.8 384 214c0 4.1-.2 8.2-.5 12.3L416 288c53 0 32 96-64 96c-3.3 0-6.5-.1-9.7-.4C328.6 451 281.4 480 224 480s-104.6-29-118.3-96.4c-3.2.3-6.4.4-9.7.4c-96 0-117-96-64-96l32.5-61.7c-.3-4.1-.5-8.2-.5-12.3C64 132.8 121 66.5 192 49.1V32c0-17.7 14.3-32 32-32zM160 216a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm128-24a24 24 0 1 0 -48 0 24 24 0 1 0 48 0z"/></svg>
-        <span>Digesti&oacute;n</span>
-      </button>
-      <button onclick="filterBenefits('metabolismo', this)" class="benefit-tab flex-shrink-0 bg-white text-slate-700 hover:bg-amber-50 font-bold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm transition-all flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="text-amber-500 text-[10px]" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.8L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.2L349.4 44.6z"/></svg>
-        <span>Metabolismo</span>
-      </button>
-      <button onclick="filterBenefits('defensas', this)" class="benefit-tab flex-shrink-0 bg-white text-slate-700 hover:bg-indigo-50 font-bold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm transition-all flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-indigo-500 text-[10px]" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.2 38.3 30 38.3 54.2v147c0 99.2-73.4 187.8-167.5 222.6L256 512l-72.5-25.4C89.4 451.8 16 363.2 16 264V137c0-24.2 16.3-45 38.3-54.2L242.6 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C325 418.2 384 350.8 384 264V137.4L256 66.8z"/></svg>
-        <span>Defensas</span>
-      </button>
-      <button onclick="filterBenefits('bienestar', this)" class="benefit-tab flex-shrink-0 bg-white text-slate-700 hover:bg-rose-50 font-bold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm transition-all flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-rose-500 text-[10px]" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M228.3 1c7.9-1.5 16 2.6 19.4 10L322 180.7l36.3-73.4c3.5-7 10.6-11.5 18.4-11.5h107c11.1-16.1 17.3-35.5 17.3-56C501 18.3 482.7 0 460.3 0 446.3 0 434 7.1 426.7 18L400 0 394.7 18c-7.4-10.9-19.6-18-33.7-18C338.6 0 320.3 18.3 320.3 40c0 20.5 6.2 39.9 17.3 56H174.4c11.1-16.1 17.3-35.5 17.3-56C191.7 18.3 173.4 0 151 0 136.9 0 124.7 7.1 117.3 18L112 0 85.3 18C78-7.1 65.7 0 51.7 0 29.3 0 11 18.3 11 40c0 20.5 6.2 39.9 17.3 56H16C7.2 96 0 103.2 0 112v32c0 8.8 7.2 16 16 16H236.7L165 357.3l-42.3-85.3c-3.4-6.9-10.4-11.3-18.1-11.3H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h57.6L153.3 463c3.5 7.1 10.7 11.6 18.6 11.5s15-4.8 18.3-12L256 313.4l72.7 173.4c3.2 7.6 10.5 12.5 18.7 12.5h1.5c8.4-.4 15.6-5.8 18.4-13.7l51.9-147.7c3.3-9.4-.2-19.9-8.4-25.4s-19.3-5.2-27 .7l-26.3 19.8-53.1-126.9L241.9 96H481c17.7 0 32-14.3 32-32s-14.3-32-32-32H242.7l-14.4-31z"/></svg>
-        <span>Bienestar</span>
-      </button>
     </div>
 
     <!-- Carrusel vertical automatico de beneficios -->
@@ -819,52 +902,53 @@
   <div class="w-full h-8 sm:h-12" style="background: linear-gradient(to bottom, #f7ecd3 0%, #f7ecd3 12%, #ffe9c7 88%, #ffe9c7 100%);"></div>
   <div class="w-full relative isolate overflow-hidden animated-gradient-bg cv-auto" style="background-image: linear-gradient(120deg, #ffe9c7, #ffe3bf, #ffd9a8, #ffe3bf);">
   <h2 style="text-align:center;padding:22px 16px 10px;margin:0;font-weight:900;color:#0f3d26;font-size:clamp(1.3rem,5.5vw,1.8rem);line-height:1.15;position:relative;z-index:10">Qué dicen nuestros <span style="color:#d9480f">clientes</span></h2>
-  <div class="relative w-full z-10">
-      <div id="testimonialsSlider" class="relative w-full h-[85vh] sm:h-[700px] bg-slate-100 overflow-hidden">
+  <div class="relative w-full z-10" style="padding:6px 16px 0;">
+      <div id="testimonialsSlider" class="relative overflow-hidden mx-auto"
+           style="width:min(100%,380px);aspect-ratio:9/16;background:#fff;border:8px solid #fff;border-radius:28px;box-shadow:0 0 0 3px #fbbf24,0 22px 45px -12px rgba(120,53,15,.4);">
         <div class="testimonial-slide absolute inset-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-192722_1789935622328.jpg" alt="Testimonio cliente 1" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-192722_1789935622328.jpg" alt="Testimonio cliente 1" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 1<br>(testimonio-1.jpg)</span>
           </div>
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-192536_1789935603174.jpg" alt="Testimonio cliente 2" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-192536_1789935603174.jpg" alt="Testimonio cliente 2" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-100 to-amber-200 text-amber-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 2<br>(testimonio-2.jpg)</span>
           </div>
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-192440_1789935586839.jpg" alt="Testimonio cliente 3" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-192440_1789935586839.jpg" alt="Testimonio cliente 3" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 3<br>(testimonio-3.jpg)</span>
           </div>
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190123_2_1789935571369.jpg" alt="Testimonio cliente 4" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190123_2_1789935571369.jpg" alt="Testimonio cliente 4" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-100 to-amber-200 text-amber-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 4<br>(testimonio-4.jpg)</span>
           </div>
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190113_2_1789935553136.jpg" alt="Testimonio cliente 5" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190113_2_1789935553136.jpg" alt="Testimonio cliente 5" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 5<br>(testimonio-5.jpg)</span>
           </div>
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190105_2_1789935537770.jpg" alt="Testimonio cliente 6" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190105_2_1789935537770.jpg" alt="Testimonio cliente 6" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-100 to-amber-200 text-amber-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 6<br>(testimonio-6.jpg)</span>
           </div>
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190055_2_1789935523788.jpg" alt="Testimonio cliente 7" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190055_2_1789935523788.jpg" alt="Testimonio cliente 7" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
             <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; testimonio 7<br>(testimonio-7.jpg)</span>
@@ -872,13 +956,13 @@
         </div>
 
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190045_2_1789935510256.jpg" alt="Testimonio cliente 8" loading="lazy" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190045_2_1789935510256.jpg" alt="Testimonio cliente 8" loading="lazy" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190037_2_1789935497646.jpg" alt="Testimonio cliente 9" loading="lazy" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190037_2_1789935497646.jpg" alt="Testimonio cliente 9" loading="lazy" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
         </div>
         <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
-          <img src="./images/Screenshot-20260727-190028_3_1789935485799.jpg" alt="Testimonio cliente 10" loading="lazy" width="720" height="1280" class="w-full h-full object-cover">
+          <img src="./images/Screenshot-20260727-190028_3_1789935485799.jpg" alt="Testimonio cliente 10" loading="lazy" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
         </div>
       </div>
   </div>
@@ -976,15 +1060,15 @@
   </div>
 
   <!-- Pricing Section -->
-  <div class="w-full relative isolate overflow-hidden cv-auto" style="background: linear-gradient(to right, #a7f3d0 0%, #d1fae5 30%, #fde68a 70%, #ffe3bf 100%);">
+  <div class="w-full relative isolate overflow-hidden cv-auto" style="background: linear-gradient(160deg, #dff3e7 0%, #ebf7ee 35%, #f6faed 65%, #fdefd6 100%); border-top: 5px solid #047857; border-image: linear-gradient(90deg, #047857, #f59e0b, #047857) 1;">
   <section class="max-w-6xl mx-auto py-16 px-4 relative z-10" id="pricing">
     <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-amber-700 bg-amber-100 font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-amber-300">
-        &#127873; OFERTAS EXCLUSIVAS TIENDA SENTIA&reg;
-      </span>
-      <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 mt-4 leading-tight">
-        Elige tu Tratamiento Natural con Ofertas
+      <h2 class="font-black leading-tight" style="font-size:clamp(1.7rem,7vw,2.75rem);color:#064e3b;letter-spacing:-.02em;">
+        Elige tu<br>
+        <span style="background:linear-gradient(90deg,#047857 0%,#0f766e 45%,#b45309 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#047857;">Tratamiento Natural</span>
       </h2>
+      <div aria-hidden="true" style="width:84px;height:5px;border-radius:9999px;margin:14px auto 0;background:linear-gradient(90deg,#047857,#f59e0b);"></div>
+      <p class="font-bold" style="color:#92400e;font-size:.95rem;margin-top:12px;letter-spacing:.02em;">&#10024; M&aacute;s tarros, m&aacute;s ahorro</p>
       <p class="text-slate-600 text-sm mt-2">
         Todos los paquetes incluyen <strong class="text-brand-700">ENV&Iacute;O GRATIS Y PAGO CONTRA ENTREGA</strong> en toda Colombia.
       </p>
@@ -1058,7 +1142,7 @@
       </div>
 
       <!-- 3 TARROS -->
-      <div class="bg-gradient-to-b from-white to-amber-50/80 backdrop-blur-sm rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all relative">
+      <div class="bg-gradient-to-b from-white to-amber-50/80 backdrop-blur-sm rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all relative ff-glow-card">
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-amber-300/60 whitespace-nowrap z-10">
             MÁS VENDIDO · MÁS AHORRO
         </div>
@@ -1099,27 +1183,24 @@
   </div>
 
   <!-- Guarantee Strip -->
-  <div class="w-full h-10 sm:h-14" style="background: linear-gradient(to bottom, #ffe3bf 0%, #064e3b 100%);"></div>
-  <div class="w-full relative isolate overflow-hidden py-14" style="background: radial-gradient(ellipse at top, #065f46 0%, #047857 40%, #064e3b 100%);">
-    <!-- Círculos decorativos de fondo -->
-    <div style="position:absolute;top:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none;"></div>
-    <div style="position:absolute;bottom:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none;"></div>
-    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none;"></div>
+  <div class="w-full h-10 sm:h-14" style="background: linear-gradient(to bottom, #fdefd6 0%, #dff3e7 100%);"></div>
+  <div class="w-full relative isolate overflow-hidden pt-14" style="padding-bottom:3.5rem; background:#dff3e7;">
     <style>
       @keyframes shield-pulse {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(167,243,208,0.4)); }
-        50% { transform: scale(1.18); filter: drop-shadow(0 0 18px rgba(167,243,208,0.8)); }
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(4,120,87,0.25)); }
+        50% { transform: scale(1.18); filter: drop-shadow(0 0 18px rgba(4,120,87,0.5)); }
       }
       .shield-animated { animation: shield-pulse 2s ease-in-out infinite; }
     </style>
     <section class="max-w-xl mx-auto px-4 relative z-10 text-center">
-      <div class="text-white text-4xl sm:text-5xl mb-3 shield-animated inline-block">
+      <div style="padding:26px 20px 28px;background:linear-gradient(180deg,#ecfdf5 0%,#dff3e7 100%);border:3px solid #047857;border-radius:22px;box-shadow:0 0 0 5px rgba(255,255,255,.5),0 14px 30px -14px rgba(6,78,59,.45);">
+      <div class="text-4xl sm:text-5xl mb-3 shield-animated inline-block" style="color:#047857;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.7 363.2-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 108c-4.4 0-8 3.6-8 8v14.5c-9.6 2.4-18.4 6.8-25.4 13-8.7 7.7-14.6 18.8-14.6 31.5 0 11.9 4.4 22.4 12.3 30 7.6 7.3 17.7 11.9 28.5 14.7l2.6 .7c11.9 3.1 20.3 5.8 25.9 9.2 4.7 2.9 6.7 6 6.7 10.9 0 5.1-1.9 8.8-5.3 11.3-3.7 2.7-9.4 4.2-16.7 4.2-9.3 0-17.7-2.6-27.9-6.8-3.4-1.4-6.9-2.8-11.1-4.3-4.2-1.5-8.7.7-10.2 4.9l-6.8 19.6c-1.5 4.2 .7 8.8 4.9 10.3 4.3 1.5 7.8 2.9 11.2 4.3 7.2 2.9 14.4 5.2 21.4 6.5V296c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8V280.8c10.2-2 19.6-6.3 27-13 9-8.1 14-19.4 14-32.8 0-12.3-4.6-23.1-12.9-31.1-8-7.7-18.7-12.6-30.3-15.7l-2.4-.6c-11.5-3-19.5-5.5-24.8-8.6-4.4-2.6-6.2-5.4-6.2-9.9 0-4.3 1.7-7.5 4.7-9.8 3.3-2.5 8.3-3.8 14.3-3.8 7.8 0 15.2 1.8 24.5 5.2 3.2 1.2 6.7-.4 8.1-3.5l8.2-18.6c1.4-3.2 0-6.9-3.1-8.4-6.9-3.3-14.1-5.6-21.4-7V116c0-4.4-3.6-8-8-8H256z"/></svg>
       </div>
-      <h3 class="text-xl sm:text-2xl font-black text-white">Garant&iacute;a de Satisfacci&oacute;n 30 D&iacute;as</h3>
-      <p class="text-emerald-50/90 text-sm sm:text-base mt-2 leading-relaxed font-medium max-w-md mx-auto">Si no notas los resultados, te devolvemos tu dinero. Sin letra peque&ntilde;a, sin complicaciones.</p>
+      <h3 class="text-xl sm:text-2xl font-black" style="color:#064e3b;">Garant&iacute;a de Satisfacci&oacute;n 30 D&iacute;as</h3>
+      <p class="text-sm sm:text-base mt-2 leading-relaxed font-medium max-w-md mx-auto" style="color:#1f4d3a;">Si no notas los resultados, te devolvemos tu dinero. Sin letra peque&ntilde;a, sin complicaciones.</p>
+      </div>
     </section>
-    <div class="absolute bottom-0 left-0 w-full h-16 sm:h-24 pointer-events-none z-20" style="background: linear-gradient(to bottom, rgba(223,243,231,0) 0%, #dff3e7 100%);"></div>
   </div>
 
 
@@ -1132,49 +1213,47 @@
         <span class="bg-emerald-100 text-brand-900 font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-emerald-200">
           &#128221; FORMULARIO OFICIAL DE DESPACHO
         </span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-3">Ingresa tus Datos de Env&iacute;o (Pagas al Recibir)</h2>
+        <h2 class="text-2xl sm:text-3xl font-black mt-3 leading-tight" style="background:linear-gradient(90deg,#047857 0%,#0f766e 45%,#b45309 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#047857;">Ingresa tus Datos de Env&iacute;o<br><span style="font-size:.7em;">(Pagas al Recibir)</span></h2>
         <p class="text-xs sm:text-sm text-slate-600 mt-1">Aprovecha el <strong>Env&iacute;o Gratis</strong> a toda Colombia y paga en efectivo o Nequi &uacute;nicamente cuando te entreguen en tu casa u oficina.</p>
       </div>
 
-      <form id="purchaseForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
-        <div role="note" style="background:#fef2f2;border:2px solid #dc2626;border-radius:14px;padding:11px 14px;color:#b91c1c;font-size:.82rem;font-weight:700;line-height:1.4;text-align:center">
-          <strong style="font-weight:900">Importante:</strong> coloca nombre y dirección completa
-        </div>
+      <form id="purchaseForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
 
 
         
         <div>
           <label for="packageSelect" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            1. Combo Seleccionado:
+            Combo seleccionado
           </label>
-          <select id="packageSelect" onchange="updateSummaryFromSelect()" class="w-full bg-slate-50 border border-slate-300 text-slate-900 font-bold text-sm rounded-xl p-3.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+          <select id="packageSelect" onchange="updateSummaryFromSelect()" class="w-full bg-slate-50 border border-slate-300 text-slate-900 font-bold text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
             <option value="1 Tarro - $79.000" data-price="79000">1 Tarro - $79.000 (Básico)</option>
             <option value="2 Tarros - $114.000" data-price="114000" selected>2 Tarros - $114.000 (Intermedio)</option>
             <option value="3 Tarros - $143.000" data-price="143000">3 Tarros - $143.000 (Completo)</option>
           </select>
         </div>
 
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label for="fullName" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            2. Nombre y Apellido:
+            Nombre y apellido
           </label>
-          <input type="text" id="fullName" placeholder="Ej. María García López" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
-          <p class="text-[11px] text-slate-400 mt-1 ml-1">Escribe tu nombre <strong>y</strong> apellido para la entrega.</p>
+          <input type="text" id="fullName" placeholder="Ej. María García López" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
         </div>
-
         <div>
           <label for="phone" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            3. Tel&eacute;fono / WhatsApp:
+            Tel&eacute;fono / WhatsApp
           </label>
-          <input type="tel" id="phone" placeholder="Ej. 3001234567" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+          <input type="tel" id="phone" placeholder="Ej. 3001234567" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
         </div>
+      </div>
 
+        <div class="grid grid-cols-2 gap-3">
         <div>
           <label for="department" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            4. Departamento:
+            Departamento
           </label>
-          <select id="department" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
-            <option value="" disabled selected>Selecciona tu departamento</option>
+          <select id="department" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+            <option value="" disabled selected>Selecciona</option>
             <option value="Amazonas">Amazonas</option>
             <option value="Antioquia">Antioquia</option>
             <option value="Arauca">Arauca</option>
@@ -1210,20 +1289,20 @@
             <option value="Vichada">Vichada</option>
           </select>
         </div>
-
         <div>
           <label for="city" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            5. Ciudad / Municipio:
+            Ciudad / Municipio
           </label>
-          <input type="text" id="city" placeholder="Ej. Medell&iacute;n, Bogot&aacute;, Cali, etc." required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+          <input type="text" id="city" placeholder="Ej. Medell&iacute;n, Bogot&aacute;, Cali, etc." required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
         </div>
+      </div>
 
         <!-- Modern D1-Style Selection Cards for Delivery Type -->
         <div>
           <label class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            6. Tipo de Entrega:
+            Tipo de entrega
           </label>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-2 gap-2.5">
             
             <!-- Card 1: Domicilio -->
             <label id="card-domicilio" onclick="selectDeliveryCard('domicilio')" class="delivery-card relative bg-emerald-50/70 border-2 border-brand-500 p-4 rounded-2xl cursor-pointer shadow-sm transition-all hover:shadow-md flex flex-col justify-between">
@@ -1238,7 +1317,7 @@
               </div>
               <div>
                 <span class="font-black text-slate-900 block text-sm">Domicilio (Casa / Trabajo)</span>
-                <span class="text-xs text-slate-600 mt-0.5 block">Entrega directa en tu puerta sin costo adicional</span>
+                <span class="ff-desc text-xs text-slate-600 mt-0.5 block">Entrega directa en tu puerta sin costo adicional</span>
               </div>
             </label>
 
@@ -1255,18 +1334,21 @@
               </div>
               <div>
                 <span class="font-black text-slate-900 block text-sm">Oficina Interrapid&iacute;simo</span>
-                <span class="text-xs text-slate-600 mt-0.5 block">Recoges y pagas en la oficina de tu ciudad</span>
+                <span class="ff-desc text-xs text-slate-600 mt-0.5 block">Recoges y pagas en la oficina de tu ciudad</span>
               </div>
             </label>
 
+          </div>
+          <div id="officeNotice" role="note" style="display:none;margin-top:10px;background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;padding:10px 12px;color:#92400e;font-size:.78rem;font-weight:700;line-height:1.4;">
+            &#128230; <strong style="font-weight:900;">Env&iacute;o a oficina sujeto a verificaci&oacute;n.</strong> Solo enviamos a oficina a clientes con buen historial en Interrapid&iacute;simo o que pidan por primera vez.
           </div>
         </div>
 
         <div id="addressGroup">
           <label id="addressLabel" for="address" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            7. Direcci&oacute;n Exacta y Barrio:
+            Direcci&oacute;n exacta y barrio
           </label>
-          <input type="text" id="address" placeholder="Ej. Calle 45 # 22 - 10 Barrio Centro" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+          <input type="text" id="address" placeholder="Ej. Calle 45 # 22 - 10 Barrio Centro" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
         </div>
 
         <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex justify-between items-center text-xs sm:text-sm">
@@ -1280,7 +1362,8 @@
           </div>
         </div>
 
-        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-600 hover:via-emerald-700 hover:to-teal-700 text-white font-black text-base sm:text-lg py-4 rounded-2xl shadow-xl shadow-emerald-600/25 hover:shadow-2xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 uppercase tracking-wider animate-cta-bounce cursor-pointer">
+        <div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:10px 12px;color:#065f46;font-size:.8rem;font-weight:700;line-height:1.35;text-align:center">&#128242; Un asesor te escribir&aacute; por WhatsApp para confirmar tu pedido antes de enviarlo.</div>
+      <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-600 hover:via-emerald-700 hover:to-teal-700 text-white font-black text-base sm:text-lg py-4 rounded-2xl shadow-xl shadow-emerald-600/25 hover:shadow-2xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 uppercase tracking-wider animate-cta-bounce cursor-pointer">
           <span id="submitIcon" class="text-amber-300 text-xl animate-bounce"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32V288 272 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg></span>
           <span id="submitText">&iexcl;COMPRAR AHORA Y PAGAR AL RECIBIR!</span>
         </button>
@@ -1421,8 +1504,12 @@
 
       <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-left my-4 text-xs space-y-1 text-slate-900 font-semibold">
         <p><strong class="text-slate-700">Cliente:</strong> <span id="modal-client-name" style="color:#0f172a">-</span></p>
+        <p><strong class="text-slate-700">WhatsApp:</strong> <span id="modal-client-phone" style="color:#0f172a">-</span></p>
         <p><strong class="text-slate-700">Ciudad:</strong> <span id="modal-client-city" style="color:#0f172a">-</span></p>
+        <p style="word-break:break-word"><strong class="text-slate-700">Entrega:</strong> <span id="modal-client-delivery" style="color:#0f172a">-</span></p>
+        <p style="word-break:break-word"><strong class="text-slate-700">Direcci&oacute;n:</strong> <span id="modal-client-address" style="color:#0f172a">-</span></p>
         <p><strong class="text-slate-700">Combo:</strong> <span id="modal-client-pack" style="color:#0f172a">-</span></p>
+        <p><strong class="text-slate-700">Total a pagar:</strong> <span id="modal-client-total" style="color:#0f172a">-</span></p>
       </div>
 
       <p class="text-xs text-amber-900 bg-amber-50 p-3 rounded-xl mb-5 font-medium border border-amber-200">
@@ -1437,17 +1524,17 @@
 
   <script>
     const ingredientsOriginal = [
-      { name: "Linaza Micropulverizada", tag: "Mucílagos, Lubricante", img: "https://images.unsplash.com/photo-1683766331291-ac921c2f895a?auto=format&fit=crop&w=300&q=55", desc: "Suaviza el tránsito intestinal ,aumenta la saciedad para controlar el apetito de forma natural.", color: "rgba(120,53,15,0.88)" },
-      { name: "Semillas de Chía", tag: "Omega 3, Fibra", img: "https://images.unsplash.com/photo-1502825926876-e8819fbb2fd0?auto=format&fit=crop&w=300&q=55", desc: "Forma un gel que protege la mucosa intestinal , también prolonga la sensación de llenura para comer menos.", color: "rgba(30,58,138,0.88)" },
+      { name: "Linaza Micropulverizada", tag: "Mucílagos, Lubricante", img: "https://images.unsplash.com/photo-1683766331291-ac921c2f895a?auto=format&fit=crop&w=300&q=55", desc: "Suaviza el tránsito intestinal y aumenta la saciedad para controlar el apetito de forma natural.", color: "rgba(120,53,15,0.88)" },
+      { name: "Semillas de Chía", tag: "Omega 3, Fibra", img: "https://images.unsplash.com/photo-1502825926876-e8819fbb2fd0?auto=format&fit=crop&w=300&q=55", desc: "Forma un gel que protege la mucosa intestinal y prolonga la sensación de llenura para comer menos.", color: "rgba(30,58,138,0.88)" },
       { name: "Salvado de Trigo", tag: "Fibra Insoluble", img: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=300&q=55", desc: "Estimula el intestino, previene el estreñimiento y mantiene la flora intestinal en equilibrio.", color: "rgba(146,64,14,0.88)" },
-      { name: "Berenjena", tag: "Depurativo Natural", img: "https://images.unsplash.com/photo-1528825950832-560a4a11473a?auto=format&fit=crop&w=300&q=55", desc: "Desinfla el abdomen, mejora la digestión de grasas , apoya el control del peso por ser baja en calorías.", color: "rgba(88,28,135,0.88)" },
-      { name: "Té Verde", tag: "Antioxidante Digestivo", img: "https://images.unsplash.com/photo-1680633479678-72880cb9a29f?auto=format&fit=crop&w=300&q=55", desc: "Protege el tracto digestivo ,y la salud de colon activa el metabolismo para quemar grasas con más eficiencia.", color: "rgba(6,78,59,0.90)" },
-      { name: "Té Negro", tag: "Estimulante Intestinal", img: "https://images.unsplash.com/photo-1606163017137-888c0177b3dd?auto=format&fit=crop&w=300&q=55", desc: "Fortalece la microbiota intestinal , mejora el metabolismo para un mejor control del peso.", color: "rgba(30,27,75,0.90)" },
-      { name: "Spirulina", tag: "Desintoxicante", img: "https://images.unsplash.com/photo-1565802700474-1c8b57596859?auto=format&fit=crop&w=300&q=55", desc: "Desintoxica el organismo, mejora la salud intestinal , aumenta la saciedad con sus proteínas naturales.", color: "rgba(6,95,70,0.90)" },
+      { name: "Berenjena", tag: "Depurativo Natural", img: "https://images.unsplash.com/photo-1528825950832-560a4a11473a?auto=format&fit=crop&w=300&q=55", desc: "Desinfla el abdomen, mejora la digestión de grasas y apoya el control del peso por ser baja en calorías.", color: "rgba(88,28,135,0.88)" },
+      { name: "Té Verde", tag: "Antioxidante Digestivo", img: "https://images.unsplash.com/photo-1680633479678-72880cb9a29f?auto=format&fit=crop&w=300&q=55", desc: "Protege el tracto digestivo y activa el metabolismo para quemar grasas con más eficiencia.", color: "rgba(6,78,59,0.90)" },
+      { name: "Té Negro", tag: "Estimulante Intestinal", img: "https://images.unsplash.com/photo-1606163017137-888c0177b3dd?auto=format&fit=crop&w=300&q=55", desc: "Fortalece la microbiota intestinal y mejora el metabolismo para un mejor control del peso.", color: "rgba(30,27,75,0.90)" },
+      { name: "Spirulina", tag: "Desintoxicante", img: "https://images.unsplash.com/photo-1565802700474-1c8b57596859?auto=format&fit=crop&w=300&q=55", desc: "Desintoxica el organismo, mejora la salud intestinal y aumenta la saciedad con sus proteínas naturales.", color: "rgba(6,95,70,0.90)" },
       { name: "Flor de Jamaica", tag: "Diurético, Antiinfl.", img: "https://images.unsplash.com/photo-1602676329820-7a1fa9f5b1ed?auto=format&fit=crop&w=300&q=55", desc: "Reduce la hinchazón abdominal y elimina la retención de líquidos con efecto diurético natural.", color: "rgba(136,19,55,0.88)" },
-      { name: "Manzana Verde", tag: "Rica en Pectina", img: "https://images.unsplash.com/photo-1678942946279-c83e37f32304?auto=format&fit=crop&w=300&q=55", desc: "Su pectina alimenta las bacterias buenas, regula el intestino , prolonga la sensación de saciedad.", color: "rgba(20,83,45,0.90)" },
-      { name: "Nopal", tag: "Regulador Digestivo", img: "https://images.unsplash.com/photo-1563422156298-c778a278f9a5?auto=format&fit=crop&w=300&q=55", desc: "Retrasa la absorción de grasas y azúcares, mejora el tránsito tratando estreñimiento , también favorece el control del peso.", color: "rgba(13,148,136,0.88)" },
-      { name: "Alcachofa", tag: "Protector Hepático", img: "https://images.unsplash.com/photo-1492015185162-70eff4d54ef5?auto=format&fit=crop&w=300&q=55", desc: "Estimula la bilis, facilita la digestión de grasas , apoya un metabolismo de higado saludable.", color: "rgba(22,101,52,0.90)" },
+      { name: "Manzana Verde", tag: "Rica en Pectina", img: "https://images.unsplash.com/photo-1678942946279-c83e37f32304?auto=format&fit=crop&w=300&q=55", desc: "Su pectina alimenta las bacterias buenas, regula el intestino y prolonga la sensación de saciedad.", color: "rgba(20,83,45,0.90)" },
+      { name: "Nopal", tag: "Regulador Digestivo", img: "https://images.unsplash.com/photo-1563422156298-c778a278f9a5?auto=format&fit=crop&w=300&q=55", desc: "Retrasa la absorción de grasas y azúcares, mejora el tránsito y favorece el control del peso.", color: "rgba(13,148,136,0.88)" },
+      { name: "Alcachofa", tag: "Protector Hepático", img: "https://images.unsplash.com/photo-1492015185162-70eff4d54ef5?auto=format&fit=crop&w=300&q=55", desc: "Estimula la bilis, facilita la digestión de grasas y apoya un metabolismo hepático saludable.", color: "rgba(22,101,52,0.90)" },
       { name: "Kiwi", tag: "Enzimas Digestivas", img: "https://images.unsplash.com/photo-1739355991544-c0908e7e8852?auto=format&fit=crop&w=300&q=55", desc: "Sus enzimas mejoran la digestión de proteínas y favorecen un tránsito intestinal ágil y saludable.", color: "rgba(63,98,18,0.90)" },
       { name: "Canela", tag: "Antiespasmódico", img: "https://images.unsplash.com/photo-1720849433556-fb756c8fcdba?auto=format&fit=crop&w=300&q=55", desc: "Alivia gases, cólicos e inflamación intestinal de forma natural y reconfortante.", color: "rgba(120,53,15,0.90)" },
       { name: "Probióticos Vivos", tag: "Flora Intestinal", img: "https://images.unsplash.com/photo-1571212515416-fef01fc43637?auto=format&fit=crop&w=300&q=55", desc: "Regeneran la flora intestinal, equilibran la microbiota, mejoran la digestión y apoyan el manejo saludable del peso.", color: "rgba(14,116,144,0.90)" },
@@ -1706,13 +1793,15 @@
     }
 
     function toggleOfficeInput(isOffice) {
+      const officeNotice = document.getElementById('officeNotice');
+      if (officeNotice) officeNotice.style.display = isOffice ? 'block' : 'none';
       const label = document.getElementById('addressLabel');
       const input = document.getElementById('address');
       if (isOffice && label && input) {
-        label.textContent = "7. Direcci\u00f3n / Sede Oficina Interrapid\u00edsimo:";
+        label.textContent = "Direcci\u00f3n / Sede Oficina Interrapid\u00edsimo:";
         input.placeholder = "Ej. Sede Principal Calle 10 # 5-20 o Nombre de la Sede";
       } else if (label && input) {
-        label.textContent = "7. Direcci\u00f3n Exacta y Barrio:";
+        label.textContent = "Direcci\u00f3n exacta y barrio:";
         input.placeholder = "Ej. Calle 45 # 22 - 10 Barrio Centro";
       }
     }
@@ -1831,6 +1920,11 @@
       document.getElementById('modal-client-name').textContent = name;
       document.getElementById('modal-client-city').textContent = city + ', ' + department;
       document.getElementById('modal-client-pack').textContent = packName;
+      document.getElementById('modal-client-phone').textContent = phone;
+      document.getElementById('modal-client-delivery').textContent = deliveryType;
+      document.getElementById('modal-client-address').textContent = address;
+      const _tot = document.getElementById('summary-total');
+      document.getElementById('modal-client-total').textContent = (_tot ? _tot.textContent : '') + ' (envío gratis, pago contra entrega)';
 
       const modal = document.getElementById('confirmModal');
       modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -2001,5 +2095,15 @@
     <p class="text-[11px] text-slate-500 mt-2">&copy; <span id="current-year">2026</span> SENTIA&reg;. Todos los derechos reservados. Tienda Oficial Colombia.</p>
   </footer>
 
+<script>
+    (function () {
+      var card = document.querySelector('.ff-glow-card');
+      if (!card) return;
+      if (!('IntersectionObserver' in window)) { card.classList.add('ff-on'); return; }
+      new IntersectionObserver(function (en) {
+        card.classList.toggle('ff-on', en[0].isIntersecting);
+      }, { threshold: 0.1 }).observe(card);
+    })();
+  </script>
 </body>
 </html>
