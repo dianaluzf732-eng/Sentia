@@ -2033,7 +2033,28 @@
         }
       });
 
-      // InitiateCheckout removido del navegador — va solo por CAPI
+      // InitiateCheckout (solo navegador): se dispara UNA vez, cuando la persona
+      // toca o enfoca el primer campo del formulario. No lleva datos personales.
+      var formEl = document.getElementById('purchaseForm');
+      if (formEl) {
+        var checkoutSent = false;
+        formEl.addEventListener('focusin', function () {
+          if (checkoutSent) return;
+          checkoutSent = true;
+          var sel = document.getElementById('packageSelect');
+          var opt = sel && sel.selectedOptions[0];
+          var packName = sel ? sel.value : '';
+          var numItems = parseInt(packName, 10) || 1;
+          fbq('track', 'InitiateCheckout', {
+            value: Number(opt && opt.dataset.price) || 0,
+            currency: 'COP',
+            content_name: packName,
+            content_ids: ['pack-' + numItems],
+            content_type: 'product',
+            num_items: numItems
+          });
+        });
+      }
     }
 
     // ✅ Compatible con Shopify: el DOMContentLoaded puede ya haber disparado
