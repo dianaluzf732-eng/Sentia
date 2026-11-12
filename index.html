@@ -154,33 +154,15 @@
     #pricing .mb-3 > span.font-black { font-size: 2.5rem; line-height: 1.1; }
     #pricing ul { font-size: .98rem; line-height: 1.45; }
     #pricing button { font-size: .98rem; }
-    /* ===== Marco animado para la oferta de 3 tarros (transform = acelerado por GPU) ===== */
-    @keyframes ff-rot { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    /* ===== Marco degradado fijo para la oferta de 3 tarros (sin animación) ===== */
     .ff-glow-card {
       border: 4px solid transparent !important;
-      background: none !important;
+      background:
+        linear-gradient(180deg, #ffffff, #fffbeb) padding-box,
+        linear-gradient(135deg, #f59e0b 0%, #10b981 35%, #0f766e 65%, #fde047 100%) border-box !important;
       backdrop-filter: none !important;
-      isolation: isolate;
       box-shadow: 0 0 22px rgba(245,158,11,.4), 0 18px 40px -14px rgba(4,120,87,.5);
     }
-    .ff-ring { position: absolute; inset: -4px; border-radius: 1rem; overflow: hidden; z-index: -1; pointer-events: none; }
-    .ff-ring::before {
-      content: ""; position: absolute; left: 50%; top: 50%; width: 320%; aspect-ratio: 1;
-      transform: translate(-50%, -50%) rotate(0deg);
-      background: conic-gradient(#f59e0b, #10b981, #0f766e, #fde047, #f59e0b);
-      animation: ff-rot 5s linear infinite; animation-play-state: paused; will-change: transform;
-    }
-    .ff-ring::after { content: ""; position: absolute; inset: 4px; border-radius: 12px; background: linear-gradient(180deg, #ffffff, #fffbeb); }
-    .ff-glow-card.ff-on .ff-ring::before { animation-play-state: running; }
-    @media (prefers-reduced-motion: reduce) { .ff-ring::before { animation: none; } }
-    /* Navegadores integrados (Facebook, Instagram, etc.) y equipos modestos: en vez de girar el marco,
-       queda fijo y solo pulsa el resplandor (opacity = barato de animar) */
-    .ff-glow-card::after { content: ""; position: absolute; inset: -4px; border-radius: 1rem; pointer-events: none; z-index: -1;
-      box-shadow: 0 0 30px 4px rgba(245,158,11,.65); opacity: 0; }
-    @keyframes ff-glow { from { opacity: .15; } to { opacity: 1; } }
-    html.is-inapp .ff-ring::before { animation: none !important; will-change: auto; }
-    html.is-inapp .ff-glow-card.ff-on::after { animation: ff-glow 1.4s ease-in-out infinite alternate; }
-    @media (prefers-reduced-motion: reduce) { html.is-inapp .ff-glow-card.ff-on::after { animation: none; opacity: .6; } }
     .glass-card {
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(12px);
@@ -1167,7 +1149,6 @@
 
       <!-- 3 TARROS -->
       <div class="bg-gradient-to-b from-white to-amber-50/80 rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all relative ff-glow-card">
-        <span class="ff-ring" aria-hidden="true"></span>
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-amber-300/60 whitespace-nowrap z-10">
             MÁS VENDIDO · MÁS AHORRO
         </div>
@@ -2159,23 +2140,6 @@
   </footer>
 
 <script>
-    (function () {
-      var card = document.querySelector('.ff-glow-card');
-      if (!card) return;
-      if (!('IntersectionObserver' in window)) { card.classList.add('ff-on'); return; }
-      new IntersectionObserver(function (en) {
-        card.classList.toggle('ff-on', en[0].isIntersecting);
-      }, { threshold: 0.1 }).observe(card);
-    })();
-  </script>
-<script>
-    // Detecta navegadores integrados (Facebook/Instagram/TikTok...) o equipos con poca memoria
-    (function () {
-      var ua = navigator.userAgent || '';
-      var inapp = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger|TikTok|musical_ly|Snapchat/i.test(ua);
-      var lowMem = navigator.deviceMemory && navigator.deviceMemory <= 2;
-      if (inapp || lowMem) document.documentElement.classList.add('is-inapp');
-    })();
     // Ofertas: sigue sin calcularse al cargar (content-visibility). Se activa solo cuando
     // la persona está a ~2500px de llegar, para que no haya tirón al pasar por ahí.
     (function () {
