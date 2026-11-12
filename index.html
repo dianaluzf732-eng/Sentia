@@ -142,6 +142,7 @@
     .gradient-hero h1, .gradient-hero p, .gradient-hero span { text-shadow: 0 2px 10px rgba(2, 44, 34, 0.55); }
     .gradient-hero{background-color:#065f46}
     .cv-auto{content-visibility:auto;contain-intrinsic-size:auto 900px}
+    .cv-pricing{content-visibility:auto;contain-intrinsic-size:auto 2400px}
     .delivery-card { padding: 10px 12px !important; }
     .delivery-card > div:first-of-type { margin-bottom: 6px !important; }
     .delivery-card .w-10 { width: 32px !important; height: 32px !important; }
@@ -187,17 +188,19 @@
       animation: slide-x 1.2s infinite ease-in-out;
     }
     @keyframes cta-pulse {
-      0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 8px 20px -4px rgba(22, 163, 74, 0.4); }
-      50% { transform: translateY(-8px) scale(1.035); box-shadow: 0 16px 30px -4px rgba(245, 158, 11, 0.7); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.035); }
     }
     .animate-cta-pulse {
+      box-shadow: 0 12px 26px -4px rgba(22, 163, 74, 0.5);
       animation: cta-pulse 1.8s infinite ease-in-out;
     }
     @keyframes cta-bounce {
-      0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2); }
-      50% { transform: translateY(-6px) scale(1.025); box-shadow: 0 12px 24px -4px rgba(245, 158, 11, 0.45); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.025); }
     }
     .animate-cta-bounce {
+      box-shadow: 0 8px 18px -4px rgba(22, 163, 74, 0.35);
       animation: cta-bounce 2.0s infinite ease-in-out;
     }
     @keyframes badge-blink-grow {
@@ -1073,7 +1076,7 @@
   </div>
 
   <!-- Pricing Section -->
-  <div class="w-full relative isolate overflow-hidden cv-auto" style="background: linear-gradient(160deg, #dff3e7 0%, #ebf7ee 35%, #f6faed 65%, #fdefd6 100%); border-top: 5px solid #047857; border-image: linear-gradient(90deg, #047857, #f59e0b, #047857) 1;">
+  <div id="pricingWrap" class="w-full relative isolate overflow-hidden cv-pricing" style="background: linear-gradient(160deg, #dff3e7 0%, #ebf7ee 35%, #f6faed 65%, #fdefd6 100%); border-top: 5px solid #047857; border-image: linear-gradient(90deg, #047857, #f59e0b, #047857) 1;">
   <section class="max-w-6xl mx-auto py-16 px-4 relative z-10" id="pricing">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <h2 class="font-black leading-tight" style="font-size:clamp(1.7rem,7vw,2.75rem);color:#064e3b;letter-spacing:-.02em;">
@@ -1089,14 +1092,14 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
       <!-- 1 TARRO -->
-      <div class="bg-gradient-to-b from-white to-amber-50/80 backdrop-blur-sm rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all">
+      <div class="bg-gradient-to-b from-white to-amber-50/80 rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all">
         <div>
           <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Tratamiento Básico</span>
           <h3 class="text-xl font-black text-slate-900 mt-1">1 Tarro Fibra Fix&reg;</h3>
           <p class="text-xs text-slate-500 mt-1">Contenido: 600 Gramos (Rinde 30-40 d&iacute;as)</p>
           
           <div class="my-3 bg-slate-50 rounded-xl p-2 border border-slate-100 text-center flex items-center justify-center">
-<img src="./images/b2f47c41-0534-4f80-9b5e-c49ee5c21197_1789935472688.jpg" alt="1 Tarro Fibra Fix" loading="lazy" width="400" height="400" class="h-28 object-contain mx-auto drop-shadow-md">
+<img src="./images/b2f47c41-0534-4f80-9b5e-c49ee5c21197_1789935472688.jpg" alt="1 Tarro Fibra Fix" loading="lazy" decoding="async" width="400" height="400" class="h-28 object-contain mx-auto drop-shadow-md">
           </div>
 
           <div class="mb-3">
@@ -1117,7 +1120,7 @@
       </div>
 
       <!-- 2 TARROS (M&Aacute;S VENDIDO / SUGERIDO) -->
-      <div class="bg-gradient-to-b from-white to-emerald-50/80 backdrop-blur-sm rounded-2xl p-4 border-4 border-brand-500 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
+      <div class="bg-gradient-to-b from-white to-emerald-50/80 rounded-2xl p-4 border-4 border-brand-500 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-amber-300/60 whitespace-nowrap z-10">
             OFERTA ESPECIAL
         </div>
@@ -1129,7 +1132,7 @@
 
           <div class="my-3 bg-emerald-50/60 rounded-xl p-2 border border-emerald-100 flex items-center justify-center">
             <div class="relative">
-<img src="./images/rn-image_picker_lib_temp_5fc7cd2d-c44b-4242-a8a5-a93394e243bf_1789935663434.jpg" alt="2 Tarros Fibra Fix" loading="lazy" width="500" height="500" class="h-32 object-contain drop-shadow-md">
+<img src="./images/rn-image_picker_lib_temp_5fc7cd2d-c44b-4242-a8a5-a93394e243bf_1789935663434.jpg" alt="2 Tarros Fibra Fix" loading="lazy" decoding="async" width="500" height="500" class="h-32 object-contain drop-shadow-md">
               <span class="absolute -top-2 -right-2 bg-amber-400 text-slate-950 text-[9px] font-black px-2 py-0.5 rounded-full shadow whitespace-nowrap">+ REGALO</span>
             </div>
           </div>
@@ -1155,7 +1158,7 @@
       </div>
 
       <!-- 3 TARROS -->
-      <div class="bg-gradient-to-b from-white to-amber-50/80 backdrop-blur-sm rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all relative ff-glow-card">
+      <div class="bg-gradient-to-b from-white to-amber-50/80 rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all relative ff-glow-card">
         <span class="ff-ring" aria-hidden="true"></span>
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-amber-300/60 whitespace-nowrap z-10">
             MÁS VENDIDO · MÁS AHORRO
@@ -1167,7 +1170,7 @@
 
           <div class="my-3 bg-slate-50 rounded-xl p-2 border border-slate-100 flex items-center justify-center">
             <div class="relative">
-<img src="./images/rn-image_picker_lib_temp_4bccac71-eaf8-474c-8f5a-2d08118b18a1_1789935689616.jpg" alt="3 Tarros Fibra Fix" loading="lazy" width="500" height="500" class="h-28 object-contain drop-shadow-md">
+<img src="./images/rn-image_picker_lib_temp_4bccac71-eaf8-474c-8f5a-2d08118b18a1_1789935689616.jpg" alt="3 Tarros Fibra Fix" loading="lazy" decoding="async" width="500" height="500" class="h-28 object-contain drop-shadow-md">
               <span class="absolute -top-2 -right-2 bg-amber-400 text-slate-950 text-[9px] font-black px-2 py-0.5 rounded-full shadow whitespace-nowrap">+ REGALO</span>
             </div>
           </div>
@@ -2155,6 +2158,21 @@
       new IntersectionObserver(function (en) {
         card.classList.toggle('ff-on', en[0].isIntersecting);
       }, { threshold: 0.1 }).observe(card);
+    })();
+  </script>
+<script>
+    // Ofertas: sigue sin calcularse al cargar (content-visibility). Se activa solo cuando
+    // la persona está a ~2500px de llegar, para que no haya tirón al pasar por ahí.
+    (function () {
+      var w = document.getElementById('pricingWrap');
+      if (!w || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (en) {
+        if (!en[0].isIntersecting) return;
+        io.disconnect();
+        var go = function () { w.style.contentVisibility = 'visible'; };
+        if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 500 }); else setTimeout(go, 50);
+      }, { rootMargin: '2500px 0px' });
+      io.observe(w);
     })();
   </script>
 </body>
