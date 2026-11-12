@@ -173,6 +173,14 @@
     .ff-ring::after { content: ""; position: absolute; inset: 4px; border-radius: 12px; background: linear-gradient(180deg, #ffffff, #fffbeb); }
     .ff-glow-card.ff-on .ff-ring::before { animation-play-state: running; }
     @media (prefers-reduced-motion: reduce) { .ff-ring::before { animation: none; } }
+    /* Navegadores integrados (Facebook, Instagram, etc.) y equipos modestos: en vez de girar el marco,
+       queda fijo y solo pulsa el resplandor (opacity = barato de animar) */
+    .ff-glow-card::after { content: ""; position: absolute; inset: -4px; border-radius: 1rem; pointer-events: none; z-index: -1;
+      box-shadow: 0 0 30px 4px rgba(245,158,11,.65); opacity: 0; }
+    @keyframes ff-glow { from { opacity: .15; } to { opacity: 1; } }
+    html.is-inapp .ff-ring::before { animation: none !important; will-change: auto; }
+    html.is-inapp .ff-glow-card.ff-on::after { animation: ff-glow 1.4s ease-in-out infinite alternate; }
+    @media (prefers-reduced-motion: reduce) { html.is-inapp .ff-glow-card.ff-on::after { animation: none; opacity: .6; } }
     .glass-card {
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(12px);
@@ -2161,6 +2169,13 @@
     })();
   </script>
 <script>
+    // Detecta navegadores integrados (Facebook/Instagram/TikTok...) o equipos con poca memoria
+    (function () {
+      var ua = navigator.userAgent || '';
+      var inapp = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger|TikTok|musical_ly|Snapchat/i.test(ua);
+      var lowMem = navigator.deviceMemory && navigator.deviceMemory <= 2;
+      if (inapp || lowMem) document.documentElement.classList.add('is-inapp');
+    })();
     // Ofertas: sigue sin calcularse al cargar (content-visibility). Se activa solo cuando
     // la persona está a ~2500px de llegar, para que no haya tirón al pasar por ahí.
     (function () {
