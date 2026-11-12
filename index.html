@@ -152,20 +152,25 @@
     #pricing .mb-3 > span.font-black { font-size: 2.5rem; line-height: 1.1; }
     #pricing ul { font-size: .98rem; line-height: 1.45; }
     #pricing button { font-size: .98rem; }
-    /* ===== Marco animado para la oferta de 3 tarros ===== */
-    @property --ff-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-    @keyframes ff-spin { to { --ff-a: 360deg; } }
+    /* ===== Marco animado para la oferta de 3 tarros (transform = acelerado por GPU) ===== */
+    @keyframes ff-rot { to { transform: translate(-50%, -50%) rotate(360deg); } }
     .ff-glow-card {
       border: 4px solid transparent !important;
-      background:
-        linear-gradient(180deg, #ffffff, #fffbeb) padding-box,
-        conic-gradient(from var(--ff-a), #f59e0b, #10b981, #0f766e, #fde047, #f59e0b) border-box !important;
+      background: none !important;
+      backdrop-filter: none !important;
+      isolation: isolate;
       box-shadow: 0 0 22px rgba(245,158,11,.4), 0 18px 40px -14px rgba(4,120,87,.5);
-      animation: ff-spin 5s linear infinite;
-      animation-play-state: paused;
     }
-    .ff-glow-card.ff-on { animation-play-state: running; }
-    @media (prefers-reduced-motion: reduce) { .ff-glow-card { animation: none; } }
+    .ff-ring { position: absolute; inset: -4px; border-radius: 1rem; overflow: hidden; z-index: -1; pointer-events: none; }
+    .ff-ring::before {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 320%; aspect-ratio: 1;
+      transform: translate(-50%, -50%) rotate(0deg);
+      background: conic-gradient(#f59e0b, #10b981, #0f766e, #fde047, #f59e0b);
+      animation: ff-rot 5s linear infinite; animation-play-state: paused; will-change: transform;
+    }
+    .ff-ring::after { content: ""; position: absolute; inset: 4px; border-radius: 12px; background: linear-gradient(180deg, #ffffff, #fffbeb); }
+    .ff-glow-card.ff-on .ff-ring::before { animation-play-state: running; }
+    @media (prefers-reduced-motion: reduce) { .ff-ring::before { animation: none; } }
     .glass-card {
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(12px);
@@ -309,7 +314,7 @@
     .ingredient-card {
       opacity: 0;
       transform: translateY(-25px) scale(0.9);
-      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     #gridWrapper.expanded .ingredient-card {
@@ -504,9 +509,12 @@
       const DELAY = 3500;          // tiempo entre tarjetas (automático)
       const RESUME = 5000;         // tras tocar/arrastrar, reanuda a los 5 s
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let idx = 0, timer = null, resumeT = null, inView = true, hold = false, raf = null;
+      let idx = 0, timer = null, resumeT = null, inView = false, hold = false, raf = null;
+      let centers = [], vw = 0;
+      function measure() { vw = track.clientWidth; centers = cards.map(c => c.offsetLeft + c.offsetWidth / 2); }
+      measure();
 
-      const targetLeft = i => cards[i].offsetLeft - (track.clientWidth - cards[i].offsetWidth) / 2;
+      const targetLeft = i => centers[i] - vw / 2;
 
       function setActive(i) {
         idx = i;
@@ -524,10 +532,10 @@
       // Detecta la tarjeta más cercana al centro (sirve para swipe, arrastre y flechas)
       function syncFromScroll() {
         raf = null;
-        const mid = track.scrollLeft + track.clientWidth / 2;
+        const mid = track.scrollLeft + vw / 2;
         let best = 0, dist = Infinity;
         cards.forEach((c, k) => {
-          const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+          const d = Math.abs(centers[k] - mid);
           if (d < dist) { dist = d; best = k; }
         });
         if (best !== idx) setActive(best);
@@ -565,20 +573,13 @@
 
       // Arrastre con el mouse en escritorio (en celular el swipe ya funciona)
       let drag = false, startX = 0, startLeft = 0, moved = 0;
-      track.addEventListener('pointerdown', e => {
-        if (e.pointerType !== 'mouse' || e.button !== 0) return;
-        drag = true; moved = 0; startX = e.clientX; startLeft = track.scrollLeft;
-        track.classList.add('is-dragging');
-        track.style.scrollSnapType = 'none';
-        track.style.scrollBehavior = 'auto';
-        userTouched();
-      });
-      window.addEventListener('pointermove', e => {
-        if (!drag) return;
+      function onMove(e) {
         moved = e.clientX - startX;
         track.scrollLeft = startLeft - moved;
-      });
-      window.addEventListener('pointerup', () => {
+      }
+      function onUp() {
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
         if (!drag) return;
         drag = false;
         track.classList.remove('is-dragging');
@@ -587,13 +588,24 @@
         syncFromScroll();
         go(idx);
         userTouched();
+      }
+      track.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        drag = true; moved = 0; startX = e.clientX; startLeft = track.scrollLeft;
+        track.classList.add('is-dragging');
+        track.style.scrollSnapType = 'none';
+        track.style.scrollBehavior = 'auto';
+        userTouched();
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
       });
 
       // Solo avanza cuando la sección está visible
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(en => { inView = en[0].isIntersecting; }, { threshold: 0.3 }).observe(track);
       }
-      window.addEventListener('resize', () => go(idx, false));
+      window.addEventListener('resize', () => { measure(); go(idx, false); });
+      window.addEventListener('load', measure);
 
       setActive(0);
       start();
@@ -1143,6 +1155,7 @@
 
       <!-- 3 TARROS -->
       <div class="bg-gradient-to-b from-white to-amber-50/80 backdrop-blur-sm rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all relative ff-glow-card">
+        <span class="ff-ring" aria-hidden="true"></span>
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-amber-300/60 whitespace-nowrap z-10">
             MÁS VENDIDO · MÁS AHORRO
         </div>
@@ -1548,6 +1561,7 @@
     const gridEl = document.getElementById('ingredientsGrid');
     const wrapperEl = document.getElementById('gridWrapper');
     let isOpen = false;
+    let gridBuilt = false;
 
     function buildGrid() {
       gridEl.innerHTML = '';
@@ -1559,7 +1573,7 @@
 
         card.innerHTML = `
           <div style="height:140px;overflow:hidden;flex-shrink:0;">
-            <img src="${item.img}" alt="${item.name}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="${item.img}" alt="${item.name}" width="300" height="140" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <div style="background:${item.color};padding:10px 11px;flex:1;display:flex;flex-direction:column;gap:5px;">
             <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;">
@@ -1579,7 +1593,12 @@
       const btnIcon = document.getElementById('btnIcon');
       
       if (!isOpen) {
-        wrapperEl.classList.add('expanded');
+        if (!gridBuilt) {
+          buildGrid(); gridBuilt = true;
+          requestAnimationFrame(() => requestAnimationFrame(() => wrapperEl.classList.add('expanded')));
+        } else {
+          wrapperEl.classList.add('expanded');
+        }
         btnText.textContent = "Ocultar ingredientes";
         btnIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>';
         isOpen = true;
@@ -1602,7 +1621,18 @@
 
     observer.observe(document.getElementById('sectionRoot'));
 
-    buildGrid();
+    // Conexión anticipada a Unsplash solo cuando la sección está cerca de la pantalla
+    if ('IntersectionObserver' in window) {
+      const pre = new IntersectionObserver((en) => {
+        if (en[0].isIntersecting) {
+          const l = document.createElement('link');
+          l.rel = 'preconnect'; l.href = 'https://images.unsplash.com';
+          document.head.appendChild(l);
+          pre.disconnect();
+        }
+      }, { rootMargin: '900px 0px' });
+      pre.observe(document.getElementById('sectionRoot'));
+    }
 
     // Año del footer protegido
     const yearEl = document.getElementById('current-year');
