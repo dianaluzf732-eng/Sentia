@@ -154,6 +154,9 @@
     #pricing .mb-3 > span.font-black { font-size: 2.5rem; line-height: 1.1; }
     #pricing ul { font-size: .98rem; line-height: 1.45; }
     #pricing button { font-size: .98rem; }
+    /* Ofertas secundarias: borde sutil del verde de marca, sin competir con la de 3 tarros */
+    .offer-soft { border: 2px solid rgba(16,185,129,.35) !important; transition: border-color .2s ease; }
+    .offer-soft:hover { border-color: rgba(16,185,129,.75) !important; }
     /* ===== Marco degradado fijo para la oferta de 3 tarros (sin animación) ===== */
     .ff-glow-card {
       border: 4px solid transparent !important;
@@ -1082,7 +1085,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
       <!-- 1 TARRO -->
-      <div class="bg-gradient-to-b from-white to-amber-50/80 rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all">
+      <div class="offer-soft bg-gradient-to-b from-white to-amber-50/80 rounded-2xl p-4 border-2 border-slate-200 shadow-lg flex flex-col justify-between hover:border-brand-500 transition-all">
         <div>
           <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Tratamiento Básico</span>
           <h3 class="text-xl font-black text-slate-900 mt-1">1 Tarro Fibra Fix&reg;</h3>
@@ -1110,7 +1113,7 @@
       </div>
 
       <!-- 2 TARROS (M&Aacute;S VENDIDO / SUGERIDO) -->
-      <div class="bg-gradient-to-b from-white to-emerald-50/80 rounded-2xl p-4 border-4 border-brand-500 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
+      <div class="offer-soft bg-gradient-to-b from-white to-emerald-50/80 rounded-2xl p-4 border-4 border-brand-500 shadow-lg relative flex flex-col justify-between transform md:-translate-y-2">
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md border border-amber-300/60 whitespace-nowrap z-10">
             OFERTA ESPECIAL
         </div>
@@ -1499,7 +1502,7 @@
   </div>
 
   <div id="confirmModal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl transform scale-90 transition-all duration-300 relative">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl transform scale-90 transition-all duration-300 relative" style="max-height:92vh;overflow-y:auto">
       <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
       </div>
@@ -1521,6 +1524,10 @@
       <p class="text-xs text-amber-900 bg-amber-50 p-3 rounded-xl mb-5 font-medium border border-amber-200">
         &#128242; Un asesor confirmar&aacute; tu despacho por WhatsApp antes de enviar con la transportadora.
       </p>
+
+      <div role="note" style="background:#fef2f2;border:2px solid #dc2626;border-radius:14px;padding:11px 14px;color:#b91c1c;font-size:.8rem;font-weight:700;line-height:1.4;text-align:center;margin:0 0 20px">
+        <strong style="font-weight:900">Importante:</strong> Al enviar tu pedido confirmas que realmente deseas recibir y pagar el producto. Cada env&iacute;o que despachamos nos genera gastos de transporte, por eso &iexcl;contamos con tu responsabilidad!
+      </div>
 
       <button onclick="closeModal()" class="w-full bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-600 hover:via-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm py-3.5 rounded-xl transition-all shadow-md">
         Aceptar / Cerrar
