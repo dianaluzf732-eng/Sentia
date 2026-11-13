@@ -114,6 +114,7 @@
     .pulse-indicator {
       animation: pulse-ring 2s infinite;
     }
+    #benefits-carousel { display: grid; }
     .benefits-bg {
       position: relative;
       background: linear-gradient(180deg, #ecfdf5 0%, #dff3e7 100%);
@@ -289,34 +290,6 @@
       50%         { transform: translateY(8px)  scale(0.88); }
       70%         { transform: translateY(0)    scale(1);    }
       100%        { transform: translateY(0)    scale(1);    }
-    }
-
-    /* Contenedor colapsable con cero espacio inicial estricto */
-    #gridWrapper {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      margin-top: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, margin-top 0.7s ease;
-    }
-
-    #gridWrapper.expanded {
-      max-height: 8000px;
-      opacity: 1;
-      margin-top: 1.5rem;
-    }
-
-    .ingredient-card {
-      opacity: 0;
-      transform: translateY(-25px) scale(0.9);
-      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    #gridWrapper.expanded .ingredient-card {
-      opacity: 1;
-      transform: translateY(0) scale(1);
     }
 
     /* Barra de desplazamiento fina para leer textos completos sin cortes */
@@ -610,7 +583,7 @@
   </script>
 
   <!-- INVIMA (fondo claro, fuera de la sección verde) -->
-  <div class="w-full" style="background:#dff3e7;padding:40px 16px 0;">
+  <div class="w-full" style="background:#dff3e7;padding:40px 16px 28px;">
     <div class="flex flex-col items-center justify-center gap-3 text-center mx-auto"
              style="max-width:520px;padding:24px 18px;background:linear-gradient(180deg,#ecfdf5 0%,#dff3e7 100%);border:3px solid #047857;border-radius:22px;box-shadow:0 0 0 5px rgba(255,255,255,.5),0 14px 30px -14px rgba(6,78,59,.45);">
           <div class="text-[11px] font-black tracking-wider uppercase inline-block" style="color:#064e3b;background:linear-gradient(180deg, transparent 40%, rgba(251,191,36,0.6) 40%); padding:0 4px;">
@@ -621,51 +594,24 @@
           <p class="text-xs font-semibold" style="color:#047857;">Fórmula natural premium</p>
         </div>
   </div>
-<!-- Interactive Ingredients Section -->
-  <!-- Sección INVIMA + Ingredientes unificada -->
-  <div id="sectionRoot" class="w-full relative isolate overflow-hidden px-4" style="background:#dff3e7;padding-bottom:24px;">
-    <div class="max-w-6xl mx-auto">
-
-      <!-- Ingredientes colapsables -->
-      <div class="text-center max-w-xl mx-auto relative z-30 pb-10" style="padding-top:40px;">
-        <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;">
-          <button onclick="toggleGrid()" id="fireBtn" class="bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-600 hover:via-emerald-700 hover:to-teal-700 text-white font-black text-sm px-8 py-3 rounded-xl shadow-lg border-2 border-amber-200 transition-all hover:scale-105 uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer relative z-40">
-            <span id="btnIcon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="display:inline-block;width:0.85em;height:0.85em;vertical-align:-0.125em"><path d="M0 192c0-17.7 14.3-32 32-32H64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zm320-96c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H352c-17.7 0-32-14.3-32-32zM224 0c13.3 0 24 10.7 24 24V48h24c66.3 0 120 53.7 120 120v16c0 8.8-7.2 16-16 16H248v16c0 8.8-7.2 16-16 16H200c-8.8 0-16-7.2-16-16V200H72c-8.8 0-16-7.2-16-16V168C56 101.7 109.7 48 176 48h24V24c0-13.3 10.7-24 24-24zM80 288H368c8.8 0 16 7.2 16 16v16c0 61.9-43.9 113.5-102.4 125.2L298.7 480c4.1 8.3 .7 18.3-7.7 22.4s-18.3 .7-22.4-7.7L240 448H208l-28.7 46.6c-4.1 8.3-14 11.7-22.4 7.7s-11.7-14-7.7-22.4l17.1-34.8C108.9 433.5 64 381.9 64 320V304c0-8.8 7.2-16 16-16z"/></svg></span>
-            <span id="btnText" style="font-size:0.85rem;font-weight:900;">Ingredientes</span>
-          </button>
-          <span class="select-none pointer-events-none" style="position:absolute;top:-24px;font-size:1.4rem;z-index:50;animation:tap-hint 1s ease-in-out infinite;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));">👇</span>
-        </div>
-      </div>
-
-      <div id="gridWrapper">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-3" id="ingredientsGrid">
-          <!-- Inyectado dinámicamente por JavaScript -->
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- Benefits Section -->
+<!-- Benefits Section -->
   <div class="w-full h-8 sm:h-12" style="background:linear-gradient(to bottom,#dff3e7 0%,#ecfdf5 100%);"></div>
   <div class="benefits-bg cv-auto">
   <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 relative" id="beneficios">
     <div class="text-center max-w-3xl mx-auto mb-10">
       <span class="text-emerald-700 bg-emerald-100 border border-emerald-300 font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full inline-flex items-center gap-2 shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" class="text-amber-500" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg> 18 BENEFICIOS COMPROBADOS
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" class="text-amber-500" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg> 19 INGREDIENTES &middot; 18 BENEFICIOS
       </span>
       <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-4 leading-tight drop-shadow-sm">
-        Protege tu Vida Digestiva e Integral
+        Conoce los ingredientes y sus beneficios
       </h2>
       <p class="text-slate-700 text-sm sm:text-base mt-3 leading-relaxed">
-        Descubre c&oacute;mo la acci&oacute;n sin&eacute;rgica de fibras vegetales, superalimentos y probi&oacute;ticos trabaja en 4 &aacute;reas fundamentales de tu organismo.
-      </p>
+        Descubre c&oacute;mo la acci&oacute;n sin&eacute;rgica de fibras vegetales, superalimentos y probi&oacute;ticos trabaja en 4 &aacute;reas fundamentales de tu organismo.</p>
     </div>
 
     <!-- Carrusel vertical automatico de beneficios -->
     <div class="relative w-full max-w-2xl mx-auto flex items-stretch gap-2">
-      <div id="benefits-carousel" class="relative flex-1 h-[400px] sm:h-[320px] overflow-hidden rounded-3xl shadow-xl border border-emerald-900/20">
+      <div id="benefits-carousel" class="relative flex-1 overflow-hidden rounded-3xl shadow-xl border border-emerald-900/20">
         <!-- JS inserta las tarjetas aqui -->
       </div>
       <!-- Flechas al lado derecho fuera del carrusel -->
@@ -679,7 +625,6 @@
         </button>
       </div>
     </div>
-
   </section>
   </div>
 
@@ -705,47 +650,123 @@
       "fa-ribbon": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1.2em;height:1.2em"><path d="M224 0C100.3 0 0 100.3 0 224c0 60.7 24.1 115.7 63.4 156.1L224 512l160.6-131.9C424 339.7 448 284.7 448 224C448 100.3 347.7 0 224 0zM160 224a64 64 0 1 1 128 0 64 64 0 1 1 -128 0z"/></svg>`,
     };
 
+    const ING = {
+      linaza:    { name: "Linaza",           img: "https://images.unsplash.com/photo-1683766331291-ac921c2f895a?auto=format&fit=crop&w=480&q=50", color: "rgba(120,53,15,0.92)" },
+      chia:      { name: "Chía",             img: "https://images.unsplash.com/photo-1502825926876-e8819fbb2fd0?auto=format&fit=crop&w=480&q=50", color: "rgba(30,58,138,0.92)" },
+      salvado:   { name: "Salvado de trigo", img: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=480&q=50", color: "rgba(146,64,14,0.92)" },
+      berenjena: { name: "Berenjena",        img: "https://images.unsplash.com/photo-1528825950832-560a4a11473a?auto=format&fit=crop&w=480&q=50", color: "rgba(88,28,135,0.92)" },
+      teverde:   { name: "Té verde",         img: "https://images.unsplash.com/photo-1680633479678-72880cb9a29f?auto=format&fit=crop&w=480&q=50", color: "rgba(6,78,59,0.93)" },
+      tenegro:   { name: "Té negro",         img: "https://images.unsplash.com/photo-1606163017137-888c0177b3dd?auto=format&fit=crop&w=480&q=50", color: "rgba(30,27,75,0.93)" },
+      spirulina: { name: "Spirulina",        img: "https://images.unsplash.com/photo-1565802700474-1c8b57596859?auto=format&fit=crop&w=480&q=50", color: "rgba(6,95,70,0.93)" },
+      jamaica:   { name: "Flor de Jamaica",  img: "https://images.unsplash.com/photo-1602676329820-7a1fa9f5b1ed?auto=format&fit=crop&w=480&q=50", color: "rgba(136,19,55,0.92)" },
+      manzana:   { name: "Manzana verde",    img: "https://images.unsplash.com/photo-1678942946279-c83e37f32304?auto=format&fit=crop&w=480&q=50", color: "rgba(20,83,45,0.93)" },
+      nopal:     { name: "Nopal",            img: "https://images.unsplash.com/photo-1563422156298-c778a278f9a5?auto=format&fit=crop&w=480&q=50", color: "rgba(13,148,136,0.92)" },
+      alcachofa: { name: "Alcachofa",        img: "https://images.unsplash.com/photo-1492015185162-70eff4d54ef5?auto=format&fit=crop&w=480&q=50", color: "rgba(22,101,52,0.93)" },
+      kiwi:      { name: "Kiwi",             img: "https://images.unsplash.com/photo-1739355991544-c0908e7e8852?auto=format&fit=crop&w=480&q=50", color: "rgba(63,98,18,0.93)" },
+      canela:    { name: "Canela",           img: "https://images.unsplash.com/photo-1720849433556-fb756c8fcdba?auto=format&fit=crop&w=480&q=50", color: "rgba(120,53,15,0.93)" },
+      probioticos:{ name: "Probióticos vivos", img: "https://images.unsplash.com/photo-1571212515416-fef01fc43637?auto=format&fit=crop&w=480&q=50", color: "rgba(14,116,144,0.93)" },
+      prebioticos:{ name: "Prebióticos",     img: "https://images.unsplash.com/photo-1755377563651-cb2b2f51d2ad?auto=format&fit=crop&w=480&q=50", color: "rgba(4,120,87,0.93)" },
+      algarrobo: { name: "Goma de algarrobo", img: "https://images.unsplash.com/photo-1771885440105-6218d4c07e09?auto=format&fit=crop&w=600&q=55", color: "rgba(92,62,21,0.93)" },
+      stevia:    { name: "Stevia orgánica",  img: "https://images.unsplash.com/photo-1747550276940-2e74ec76e5f8?auto=format&fit=crop&w=480&q=50", color: "rgba(22,163,74,0.90)" },
+      naranja:   { name: "Sabor a naranja",  img: "https://images.unsplash.com/photo-1741461638883-d312143aea0d?auto=format&fit=crop&w=480&q=50", color: "rgba(154,52,18,0.93)" },
+      vitaminas: { name: "Vitaminas A, C y D", img: "https://images.unsplash.com/photo-1549477752-31cd7327aed0?auto=format&fit=crop&w=480&q=50", color: "rgba(180,83,9,0.93)" }
+    };
+
+    // "ings": el primero es la foto principal del slide; todos salen como chips "Gracias a".
+    const BEN = {
+      transito: "Tránsito intestinal regular",
+      estre: "Previene el estreñimiento",
+      saciedad: "Saciedad prolongada",
+      micro: "Equilibra la flora y microbiota",
+      pesadas: "Mejor digestión de comidas pesadas",
+      energia: "Apoya el metabolismo y la energía",
+      antiox: "Poder antioxidante natural",
+      peso: "Apoya la pérdida de peso natural",
+      gases: "Reduce gases y ventosidades",
+      inmune: "Fortalece el sistema inmune",
+      desinfl: "Desinflama las paredes intestinales",
+      colon: "Bienestar integral del colon",
+      toxinas: "Eliminación continua de toxinas",
+      gastritis: "Alivia gastritis y ardor",
+      hidrat: "Hidratación del bolo intestinal",
+      hemorr: "Alivia las molestias de hemorroides",
+      glucosa: "Ayuda a regular picos de glucosa",
+      proteccion: "Protección preventiva del colon"
+    };
+
+    // Un slide por ingrediente. "ben": claves de BEN o frases propias. Los 18 beneficios quedan repartidos.
     const benefitsData = [
-      { cat: "digestion", icon: "fa-arrows-rotate", tag: "DIGESTIÓN", tagColor: "text-emerald-300", iconGrad: "from-emerald-500 to-teal-600", title: "Favorece un Tránsito Intestinal Regular", desc: "Restaura la frecuencia y el ritmo natural del movimiento intestinal, eliminando la incomodidad desde los primeros días." },
-      { cat: "digestion", icon: "fa-circle-check", tag: "BENEFICIO ESTRELLA", tagColor: "text-amber-300", iconGrad: "from-amber-400 to-amber-600", title: "Ayuda a Prevenir el Estreñimiento", desc: "Su mezcla única de fibra soluble e insoluble lubrica y ablanda las heces para evacuaciones fluidas y sin esfuerzo alguno." },
-      { cat: "metabolismo", icon: "fa-utensils", tag: "METABOLISMO", tagColor: "text-amber-300", iconGrad: "from-amber-500 to-orange-600", title: "Aporta Sensación de Saciedad Prolongada", desc: "La fibra se expande suavemente en el estómago, ayudando a controlar la ansiedad y el picoteo entre comidas." },
-      { cat: "digestion", icon: "fa-bacteria", tag: "MICROBIOTA", tagColor: "text-emerald-300", iconGrad: "from-emerald-500 to-teal-600", title: "Equilibra la Flora y Microbiota Intestinal", desc: "Contiene probióticos vivos y prebióticos que regeneran las bacterias benéficas de tu intestino de manera sostenible." },
-      { cat: "digestion", icon: "fa-bowl-food", tag: "DIGESTIÓN", tagColor: "text-emerald-300", iconGrad: "from-teal-500 to-emerald-700", title: "Mejora la Digestión de Alimentos Pesados", desc: "Facilita el desglose de harinas, grasas y condimentos, previniendo la pesadez estomacal posterior a las comidas." },
-      { cat: "metabolismo", icon: "fa-bolt", tag: "ENERGÍA", tagColor: "text-amber-300", iconGrad: "from-amber-500 to-yellow-600", title: "Apoya el Metabolismo Energético", desc: "Optimiza la conversión de nutrientes en energía pura, combatiendo la fatiga crónica causada por un colon perezoso." },
-      { cat: "bienestar", icon: "fa-seedling", tag: "ANTIOXIDANTE", tagColor: "text-rose-300", iconGrad: "from-rose-500 to-pink-600", title: "Poder Antioxidante Natural", desc: "Con té verde, té negro, spirulina y vitamina C que combaten los radicales libres y el envejecimiento celular prematuro." },
-      { cat: "metabolismo", icon: "fa-weight-scale", tag: "CONTROL DE PESO", tagColor: "text-amber-300", iconGrad: "from-amber-500 to-orange-600", title: "Apoya la Pérdida de Peso Natural", desc: "Ayuda a eliminar toxinas y retención de líquidos acumulados, desinflamando significativamente la medida del abdomen." },
-      { cat: "digestion", icon: "fa-wind", tag: "DIGESTIÓN", tagColor: "text-emerald-300", iconGrad: "from-emerald-500 to-teal-600", title: "Reducción Efectiva de Gases y Ventosidades", desc: "Previene la fermentación excesiva en el colon, aliviando cólicos gaseosos y ruidos estomacales molestos." },
-      { cat: "defensas", icon: "fa-shield-virus", tag: "INMUNIDAD", tagColor: "text-indigo-300", iconGrad: "from-indigo-500 to-purple-600", title: "Fortalece el Sistema Inmune", desc: "Enriquecido con Vitaminas A, C y D. Recuerda que más del 70% de tus defensas residen directamente en el intestino." },
-      { cat: "digestion", icon: "fa-compress", tag: "DESINFLAMACIÓN", tagColor: "text-emerald-300", iconGrad: "from-emerald-500 to-teal-600", title: "Desinflama las Paredes Intestinales", desc: "Sus mucílagos de chía y linaza forman una capa protectora calmante que reduce la inflamación y rigidez digestiva." },
-      { cat: "digestion", icon: "fa-heart-pulse", tag: "COLON SALUDABLE", tagColor: "text-emerald-300", iconGrad: "from-teal-600 to-cyan-600", title: "Contribuye al Bienestar Integral del Colon", desc: "Limpia las incrustaciones fecales viejas adosadas al intestino sin provocar retortijones ni espasmos dolorosos." },
-      { cat: "bienestar", icon: "fa-broom", tag: "DEPURACIÓN", tagColor: "text-rose-300", iconGrad: "from-rose-500 to-pink-600", title: "Promueve la Eliminación Continua de Toxinas", desc: "Ingredientes como berenjena, alcachofa y nopal apoyan la desintoxicación hepática y la pureza del flujo digestivo." },
-      { cat: "digestion", icon: "fa-kit-medical", tag: "ALIVIO GÁSTRICO", tagColor: "text-emerald-300", iconGrad: "from-emerald-500 to-teal-600", title: "Alivia la Sensación de Gastritis y Ardor", desc: "Su pH alcalinizante natural amortigua la acidez estomacal de forma efectiva y sin medicamentos agresivos." },
-      { cat: "digestion", icon: "fa-droplet", tag: "HIDRATACIÓN", tagColor: "text-emerald-300", iconGrad: "from-teal-500 to-cyan-600", title: "Optimiza la Hidratación de la Bolo Intestinal", desc: "Retiene la humedad idónea en el tracto intestinal, impidiendo que el bolo fecal se reseque y genere malestar al expulsarlo." },
-      { cat: "bienestar", icon: "fa-hand-holding-medical", tag: "ALIVIO LOCAL", tagColor: "text-rose-300", iconGrad: "from-rose-500 to-red-600", title: "Alivia las Molestias de Hemorroides", desc: "Al suavizar las heces, elimina el trauma físico durante la defecación, favoreciendo el alivio de la zona inflamada." },
-      { cat: "metabolismo", icon: "fa-chart-line-down", tag: "GLUCOSA", tagColor: "text-amber-300", iconGrad: "from-amber-500 to-orange-600", title: "Ayuda a Regular los Picos de Glucosa", desc: "La fibra soluble ralentiza la absorción de los carbohidratos, apoyando el equilibrio de los niveles de azúcar en sangre." },
-      { cat: "defensas bienestar", icon: "fa-ribbon", tag: "PREVENCIÓN", tagColor: "text-indigo-300", iconGrad: "from-indigo-500 to-purple-600", title: "Protección Preventiva del Colon", desc: "Evita el estancamiento prolongado de residuos tóxicos en las paredes intestinales, promoviendo la longevidad del sistema digestivo." },
+      { key: "linaza", tag: "Mucílagos · Lubricante", desc: "Sus mucílagos lubrican y suavizan el tránsito intestinal, forman una capa protectora calmante que reduce la inflamación y aumentan la saciedad para controlar el apetito de forma natural.", ben: ["transito", "estre", "desinfl", "hemorr"] },
+      { key: "chia", tag: "Omega 3 · Fibra", desc: "Forma un gel que protege la mucosa intestinal, retiene la humedad para que las heces no se resequen y prolonga la sensación de llenura, ayudando a controlar la ansiedad y el picoteo entre comidas.", ben: ["saciedad", "desinfl", "hidrat"] },
+      { key: "salvado", tag: "Fibra insoluble", desc: "Su fibra insoluble estimula el intestino, previene el estreñimiento y mantiene la flora intestinal en equilibrio, para evacuaciones fluidas y sin esfuerzo desde los primeros días.", ben: ["transito", "estre", "colon", "hemorr"] },
+      { key: "berenjena", tag: "Depurativo natural", desc: "Desinfla el abdomen, mejora la digestión de grasas y apoya la depuración continua del organismo. Además es baja en calorías, así que suma al control del peso.", ben: ["toxinas", "pesadas", "peso"] },
+      { key: "teverde", tag: "Antioxidante digestivo", desc: "Sus antioxidantes combaten los radicales libres y protegen el tracto digestivo, mientras activa el metabolismo para quemar grasas con más eficiencia.", ben: ["antiox", "peso", "energia"] },
+      { key: "tenegro", tag: "Estimulante intestinal", desc: "Fortalece la microbiota intestinal, aporta antioxidantes y mejora el metabolismo para convertir los nutrientes en energía y llevar un mejor control del peso.", ben: ["micro", "energia", "antiox"] },
+      { key: "spirulina", tag: "Desintoxicante", desc: "Desintoxica el organismo, mejora la salud intestinal y aumenta la saciedad con sus proteínas naturales, ayudando a evitar el estancamiento prolongado de residuos en el intestino.", ben: ["toxinas", "proteccion", "antiox"] },
+      { key: "jamaica", tag: "Diurético · Antiinflamatorio", desc: "Reduce la hinchazón abdominal y elimina la retención de líquidos con efecto diurético natural, desinflando la medida de tu abdomen.", ben: ["peso", "Reduce la retención de líquidos", "Desinfla el abdomen"] },
+      { key: "manzana", tag: "Rica en pectina", desc: "Su pectina alimenta las bacterias buenas, regula el intestino, prolonga la saciedad y ralentiza la absorción de los carbohidratos, apoyando el equilibrio del azúcar en sangre.", ben: ["saciedad", "micro", "glucosa", "gastritis"] },
+      { key: "nopal", tag: "Regulador digestivo", desc: "Retrasa la absorción de grasas y azúcares, mejora el tránsito y favorece el control del peso. Ayuda a amortiguar la acidez estomacal sin medicamentos agresivos.", ben: ["glucosa", "gastritis", "toxinas", "peso"] },
+      { key: "alcachofa", tag: "Protector hepático", desc: "Estimula la bilis, facilita la digestión de grasas, harinas y condimentos y apoya un metabolismo hepático saludable y la pureza del flujo digestivo.", ben: ["pesadas", "Apoya la desintoxicación hepática", "proteccion"] },
+      { key: "kiwi", tag: "Enzimas digestivas", desc: "Sus enzimas mejoran la digestión de proteínas y previenen la pesadez estomacal después de comer, además de favorecer un tránsito intestinal ágil y saludable.", ben: ["pesadas", "transito"] },
+      { key: "canela", tag: "Antiespasmódico", desc: "Alivia gases, cólicos e inflamación intestinal de forma natural y reconfortante, previene la fermentación excesiva en el colon y calma los ruidos estomacales molestos.", ben: ["gases", "desinfl", "Alivia los cólicos gaseosos"] },
+      { key: "probioticos", tag: "Flora intestinal", desc: "Regeneran las bacterias benéficas de tu intestino, equilibran la microbiota y mejoran la digestión. Más del 70% de tus defensas reside en el intestino, y además apoyan el manejo saludable del peso.", ben: ["micro", "inmune", "colon", "Manejo saludable del peso"] },
+      { key: "prebioticos", tag: "Alimento bacteriano", desc: "Alimentan las bacterias buenas del intestino para una digestión eficiente y un peso más saludable, de forma sostenible y sin retortijones ni espasmos dolorosos.", ben: ["micro", "colon", "Apoya un peso más saludable"] },
+      { key: "algarrobo", tag: "Compactante", desc: "Compactante vegetal que da consistencia a la fórmula y apoya un tránsito digestivo regular, ayudando a mantener la humedad idónea en el tracto intestinal.", ben: ["transito", "hidrat"] },
+      { key: "stevia", tag: "Cero calorías", desc: "Endulza sin calorías ni azúcar, ideal para quienes cuidan su digestión y su peso, sin quitarle sabor a tu fibra diaria.", ben: ["Sin azúcar añadida", "Cero calorías", "Cuida tu digestión y tu peso"] },
+      { key: "naranja", tag: "Sabor fresco", desc: "Hace que tu rutina diaria de fibra sea un momento fresco y agradable que nunca querrás saltarte: aroma y sabor a naranja, endulzado naturalmente con stevia.", ben: ["Aroma y sabor a naranja", "Fácil de tomar todos los días", "Se prepara en 1 minuto"] },
+      { key: "vitaminas", tag: "Nutrición total", desc: "Potencian las defensas, activan el metabolismo y mantienen tu energía durante el día. Recuerda que más del 70% de tus defensas residen directamente en el intestino.", ben: ["inmune", "energia", "antiox"] },
     ];
     let currentBenefitIdx = 0;
     let pendingBenefitReset = null;
     let filteredBenefits = benefitsData;
     let benefitsInterval = null;
+    let benefitsImgsOn = false;
+
+    function loadBenefitSlide(i) {
+      if (!benefitsImgsOn) return;
+      const slides = document.querySelectorAll('#benefits-carousel .benefit-slide');
+      if (!slides.length) return;
+      const sl = slides[(i + slides.length) % slides.length];
+      sl.querySelectorAll('img[data-src]').forEach(im => {
+        im.src = im.getAttribute('data-src');
+        im.removeAttribute('data-src');
+      });
+    }
 
     function buildBenefitsCarousel() {
       const container = document.getElementById('benefits-carousel');
-      container.innerHTML = filteredBenefits.map((b, idx) => `
-        <div class="benefit-slide absolute inset-0 transition-transform duration-700 ease-in-out p-7 sm:p-10 bg-gradient-to-br from-emerald-900 via-slate-900 to-emerald-950 text-white rounded-3xl border border-emerald-500/30 flex flex-col justify-center" style="transform: translateY(${idx === 0 ? '0' : '100%'});">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br ${b.iconGrad} text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
-              ${iconSVGs[b.icon] || ""}
+      const total = filteredBenefits.length;
+      container.innerHTML = filteredBenefits.map((b, idx) => {
+        const ing = ING[b.key];
+        const solid = ing.color.replace(/,[0-9.]+\)$/, ',1)');
+        const rows = b.ben.map(x => `
+          <li style="display:flex;align-items:flex-start;gap:7px;font-size:13px;font-weight:700;line-height:1.3;color:#fff">
+            <span style="flex:none;color:#6ee7b7;font-size:14px;margin-top:1px">${iconSVGs['fa-circle-check']}</span>
+            <span>${BEN[x] || x}</span>
+          </li>`).join('');
+        return `
+        <div class="benefit-slide relative transition-transform duration-700 ease-in-out text-white rounded-3xl" style="grid-area:1/1;transform: translateY(${idx === 0 ? '0' : '100%'});overflow:hidden;background:${solid};display:flex;flex-direction:column">
+          <div style="position:relative;flex:none;height:172px;background:${solid}">
+            <img data-src="${ing.img}" alt="${ing.name}" decoding="async" referrerpolicy="no-referrer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <div style="position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(180deg,rgba(0,0,0,0),${solid})"></div>
+            <div style="position:absolute;top:12px;left:14px;right:14px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+              <span style="background:rgba(2,20,15,.55);border-radius:999px;padding:5px 12px;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#fcd34d">${b.tag}</span>
+              <span style="background:rgba(2,20,15,.55);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:800;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums">${idx + 1} / ${total}</span>
             </div>
-            <span class="${b.tagColor} font-black text-[10px] uppercase tracking-widest">${b.tag}</span>
           </div>
-          <h3 class="font-extrabold text-white text-lg sm:text-2xl mb-3">${b.title}</h3>
-          <p class="text-sm sm:text-base text-slate-200 leading-relaxed">${b.desc}</p>
-        </div>
-      `).join('');
+          <div style="flex:1;min-height:0;padding:2px 18px 18px;display:flex;flex-direction:column;gap:10px">
+            <h3 class="font-extrabold text-white text-xl sm:text-2xl" style="line-height:1.15;margin:0">${ing.name}</h3>
+            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">${b.desc}</p>
+            <div style="margin-top:auto">
+              <p style="margin:0 0 6px;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65)">Beneficios</p>
+              <ul style="display:flex;flex-direction:column;gap:5px">${rows}</ul>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
       currentBenefitIdx = 0;
       renderBenefitsDots();
+      if (benefitsImgsOn) { loadBenefitSlide(0); loadBenefitSlide(1); }
     }
 
     function renderBenefitsDots() {
@@ -759,6 +780,7 @@
       const prevIdx = currentBenefitIdx;
       const newIdx = (currentBenefitIdx + direction + slides.length) % slides.length;
       currentBenefitIdx = newIdx;
+      loadBenefitSlide(newIdx); loadBenefitSlide(newIdx + 1); loadBenefitSlide(newIdx - 1);
 
       if (pendingBenefitReset) { clearTimeout(pendingBenefitReset); pendingBenefitReset = null; }
 
@@ -796,25 +818,24 @@
 
     function startBenefitsAutoplay() {
       if (benefitsInterval) clearInterval(benefitsInterval);
-      benefitsInterval = setInterval(advanceBenefit, 8000);
-    }
-
-    function filterBenefits(category, btnElement) {
-      document.querySelectorAll('.benefit-tab').forEach(tab => {
-        tab.classList.remove('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'text-white', 'shadow-md', 'active-tab');
-        tab.classList.add('bg-white', 'text-slate-700');
-      });
-      if (btnElement) {
-        btnElement.classList.remove('bg-white', 'text-slate-700');
-        btnElement.classList.add('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'text-white', 'shadow-md', 'active-tab');
-      }
-      filteredBenefits = category === 'all' ? benefitsData : benefitsData.filter(b => b.cat.split(' ').includes(category));
-      buildBenefitsCarousel();
-      startBenefitsAutoplay();
+      benefitsInterval = setInterval(advanceBenefit, 6000);
     }
 
     buildBenefitsCarousel();
     startBenefitsAutoplay();
+
+    (function () {
+      var c = document.getElementById('benefits-carousel');
+      if (!c) return;
+      function on() { benefitsImgsOn = true; loadBenefitSlide(currentBenefitIdx); loadBenefitSlide(currentBenefitIdx + 1); }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (en) {
+          if (en[0].isIntersecting) { io.disconnect(); on(); }
+        }, { rootMargin: '800px 0px' });
+        io.observe(c);
+      } else { on(); }
+    })();
+
   </script>
 
   <!-- Impact Banner (franja de ancho completo, no tarjeta) -->
@@ -1371,7 +1392,6 @@
           </div>
         </div>
 
-        <div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:10px 12px;color:#065f46;font-size:.8rem;font-weight:700;line-height:1.35;text-align:center">&#128242; Un asesor te escribir&aacute; por WhatsApp para confirmar tu pedido antes de enviarlo.</div>
       <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-600 hover:via-emerald-700 hover:to-teal-700 text-white font-black text-base sm:text-lg py-4 rounded-2xl shadow-xl shadow-emerald-600/25 hover:shadow-2xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 uppercase tracking-wider animate-cta-bounce cursor-pointer">
           <span id="submitIcon" class="text-amber-300 text-xl animate-bounce"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32V288 272 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg></span>
           <span id="submitText">&iexcl;COMPRAR AHORA Y PAGAR AL RECIBIR!</span>
@@ -1532,104 +1552,6 @@
   </div>
 
   <script>
-    const ingredientsOriginal = [
-      { name: "Linaza Micropulverizada", tag: "Mucílagos, Lubricante", img: "https://images.unsplash.com/photo-1683766331291-ac921c2f895a?auto=format&fit=crop&w=300&q=55", desc: "Suaviza el tránsito intestinal y aumenta la saciedad para controlar el apetito de forma natural.", color: "rgba(120,53,15,0.88)" },
-      { name: "Semillas de Chía", tag: "Omega 3, Fibra", img: "https://images.unsplash.com/photo-1502825926876-e8819fbb2fd0?auto=format&fit=crop&w=300&q=55", desc: "Forma un gel que protege la mucosa intestinal y prolonga la sensación de llenura para comer menos.", color: "rgba(30,58,138,0.88)" },
-      { name: "Salvado de Trigo", tag: "Fibra Insoluble", img: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=300&q=55", desc: "Estimula el intestino, previene el estreñimiento y mantiene la flora intestinal en equilibrio.", color: "rgba(146,64,14,0.88)" },
-      { name: "Berenjena", tag: "Depurativo Natural", img: "https://images.unsplash.com/photo-1528825950832-560a4a11473a?auto=format&fit=crop&w=300&q=55", desc: "Desinfla el abdomen, mejora la digestión de grasas y apoya el control del peso por ser baja en calorías.", color: "rgba(88,28,135,0.88)" },
-      { name: "Té Verde", tag: "Antioxidante Digestivo", img: "https://images.unsplash.com/photo-1680633479678-72880cb9a29f?auto=format&fit=crop&w=300&q=55", desc: "Protege el tracto digestivo y activa el metabolismo para quemar grasas con más eficiencia.", color: "rgba(6,78,59,0.90)" },
-      { name: "Té Negro", tag: "Estimulante Intestinal", img: "https://images.unsplash.com/photo-1606163017137-888c0177b3dd?auto=format&fit=crop&w=300&q=55", desc: "Fortalece la microbiota intestinal y mejora el metabolismo para un mejor control del peso.", color: "rgba(30,27,75,0.90)" },
-      { name: "Spirulina", tag: "Desintoxicante", img: "https://images.unsplash.com/photo-1565802700474-1c8b57596859?auto=format&fit=crop&w=300&q=55", desc: "Desintoxica el organismo, mejora la salud intestinal y aumenta la saciedad con sus proteínas naturales.", color: "rgba(6,95,70,0.90)" },
-      { name: "Flor de Jamaica", tag: "Diurético, Antiinfl.", img: "https://images.unsplash.com/photo-1602676329820-7a1fa9f5b1ed?auto=format&fit=crop&w=300&q=55", desc: "Reduce la hinchazón abdominal y elimina la retención de líquidos con efecto diurético natural.", color: "rgba(136,19,55,0.88)" },
-      { name: "Manzana Verde", tag: "Rica en Pectina", img: "https://images.unsplash.com/photo-1678942946279-c83e37f32304?auto=format&fit=crop&w=300&q=55", desc: "Su pectina alimenta las bacterias buenas, regula el intestino y prolonga la sensación de saciedad.", color: "rgba(20,83,45,0.90)" },
-      { name: "Nopal", tag: "Regulador Digestivo", img: "https://images.unsplash.com/photo-1563422156298-c778a278f9a5?auto=format&fit=crop&w=300&q=55", desc: "Retrasa la absorción de grasas y azúcares, mejora el tránsito y favorece el control del peso.", color: "rgba(13,148,136,0.88)" },
-      { name: "Alcachofa", tag: "Protector Hepático", img: "https://images.unsplash.com/photo-1492015185162-70eff4d54ef5?auto=format&fit=crop&w=300&q=55", desc: "Estimula la bilis, facilita la digestión de grasas y apoya un metabolismo hepático saludable.", color: "rgba(22,101,52,0.90)" },
-      { name: "Kiwi", tag: "Enzimas Digestivas", img: "https://images.unsplash.com/photo-1739355991544-c0908e7e8852?auto=format&fit=crop&w=300&q=55", desc: "Sus enzimas mejoran la digestión de proteínas y favorecen un tránsito intestinal ágil y saludable.", color: "rgba(63,98,18,0.90)" },
-      { name: "Canela", tag: "Antiespasmódico", img: "https://images.unsplash.com/photo-1720849433556-fb756c8fcdba?auto=format&fit=crop&w=300&q=55", desc: "Alivia gases, cólicos e inflamación intestinal de forma natural y reconfortante.", color: "rgba(120,53,15,0.90)" },
-      { name: "Probióticos Vivos", tag: "Flora Intestinal", img: "https://images.unsplash.com/photo-1571212515416-fef01fc43637?auto=format&fit=crop&w=300&q=55", desc: "Regeneran la flora intestinal, equilibran la microbiota, mejoran la digestión y apoyan el manejo saludable del peso.", color: "rgba(14,116,144,0.90)" },
-      { name: "Prebióticos", tag: "Alimento Bacteriano", img: "https://images.unsplash.com/photo-1755377563651-cb2b2f51d2ad?auto=format&fit=crop&w=300&q=55", desc: "Alimentan las bacterias buenas del intestino para una digestión eficiente y un peso más saludable.", color: "rgba(4,120,87,0.90)" },
-      { name: "Goma de Algarrobo", tag: "Compactante", img: "https://images.unsplash.com/photo-1771885440105-6218d4c07e09?auto=format&fit=crop&w=300&q=55", desc: "Compactante vegetal que da consistencia a la fórmula y apoya un tránsito digestivo regular.", color: "rgba(92,62,21,0.90)" },
-      { name: "Stevia Orgánica", tag: "Cero Calorías", img: "https://images.unsplash.com/photo-1747550276940-2e74ec76e5f8?auto=format&fit=crop&w=300&q=55", desc: "Endulza sin calorías ni azúcar, ideal para quienes cuidan su digestión y su peso.", color: "rgba(22,163,74,0.88)" },
-      { name: "Sabor a Naranja", tag: "Sabor Fresco", img: "https://images.unsplash.com/photo-1741461638883-d312143aea0d?auto=format&fit=crop&w=300&q=55", desc: "Hace que tu rutina diaria de fibra sea un momento fresco y agradable que nunca querrás saltarte.", color: "rgba(154,52,18,0.90)" },
-      { name: "Vitamina A, C y D", tag: "Nutrición Total", img: "https://images.unsplash.com/photo-1549477752-31cd7327aed0?auto=format&fit=crop&w=300&q=55", desc: "Potencian las defensas, activan el metabolismo y mantienen tu energía durante el día.", color: "rgba(180,83,9,0.90)" }
-    ];
-
-    const gridEl = document.getElementById('ingredientsGrid');
-    const wrapperEl = document.getElementById('gridWrapper');
-    let isOpen = false;
-    let gridBuilt = false;
-
-    function buildGrid() {
-      gridEl.innerHTML = '';
-      ingredientsOriginal.forEach((item, idx) => {
-        const card = document.createElement('div');
-        card.className = 'ingredient-card relative rounded-2xl overflow-hidden shadow-xl flex flex-col';
-        card.style.transitionDelay = `${idx * 15}ms`;
-        card.style.border = '1.5px solid rgba(255,255,255,0.12)';
-
-        card.innerHTML = `
-          <div style="height:140px;overflow:hidden;flex-shrink:0;">
-            <img src="${item.img}" alt="${item.name}" width="300" height="140" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;">
-          </div>
-          <div style="background:${item.color};padding:10px 11px;flex:1;display:flex;flex-direction:column;gap:5px;">
-            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;">
-              <span style="background:rgba(251,191,36,0.95);color:#0f172a;font-size:8px;font-weight:900;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;">${item.tag}</span>
-              <span style="color:rgba(255,255,255,0.6);font-size:8px;font-weight:700;">#${idx + 1}</span>
-            </div>
-            <h3 style="color:#ffffff;font-size:13px;font-weight:900;line-height:1.2;margin:0;text-shadow:0 1px 3px rgba(0,0,0,0.4);">${item.name}</h3>
-            <p style="color:rgba(255,255,255,0.88);font-size:10.5px;line-height:1.5;margin:0;">${item.desc}</p>
-          </div>
-        `;
-        gridEl.appendChild(card);
-      });
-    }
-
-    function toggleGrid() {
-      const btnText = document.getElementById('btnText');
-      const btnIcon = document.getElementById('btnIcon');
-      
-      if (!isOpen) {
-        if (!gridBuilt) {
-          buildGrid(); gridBuilt = true;
-          requestAnimationFrame(() => requestAnimationFrame(() => wrapperEl.classList.add('expanded')));
-        } else {
-          wrapperEl.classList.add('expanded');
-        }
-        btnText.textContent = "Ocultar ingredientes";
-        btnIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>';
-        isOpen = true;
-      } else {
-        wrapperEl.classList.remove('expanded');
-        btnText.textContent = "Ingredientes";
-        btnIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 192c0-17.7 14.3-32 32-32H64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zm320-96c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H352c-17.7 0-32-14.3-32-32zM224 0c13.3 0 24 10.7 24 24V48h24c66.3 0 120 53.7 120 120v16c0 8.8-7.2 16-16 16H248v16c0 8.8-7.2 16-16 16H200c-8.8 0-16-7.2-16-16V200H72c-8.8 0-16-7.2-16-16V168C56 101.7 109.7 48 176 48h24V24c0-13.3 10.7-24 24-24zM80 288H368c8.8 0 16 7.2 16 16v16c0 61.9-43.9 113.5-102.4 125.2L298.7 480c4.1 8.3 .7 18.3-7.7 22.4s-18.3 .7-22.4-7.7L240 448H208l-28.7 46.6c-4.1 8.3-14 11.7-22.4 7.7s-11.7-14-7.7-22.4l17.1-34.8C108.9 433.5 64 381.9 64 320V304c0-8.8 7.2-16 16-16z"/></svg>';
-        isOpen = false;
-      }
-    }
-
-    // Se contrae solo al salir de la sección en pantalla
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting && isOpen) {
-          toggleGrid();
-        }
-      });
-    }, { threshold: 0 });
-
-    observer.observe(document.getElementById('sectionRoot'));
-
-    // Conexión anticipada a Unsplash solo cuando la sección está cerca de la pantalla
-    if ('IntersectionObserver' in window) {
-      const pre = new IntersectionObserver((en) => {
-        if (en[0].isIntersecting) {
-          const l = document.createElement('link');
-          l.rel = 'preconnect'; l.href = 'https://images.unsplash.com';
-          document.head.appendChild(l);
-          pre.disconnect();
-        }
-      }, { rootMargin: '900px 0px' });
-      pre.observe(document.getElementById('sectionRoot'));
-    }
-
     // Año del footer protegido
     const yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
