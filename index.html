@@ -342,7 +342,7 @@
 
       <div class="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 font-semibold text-xs px-3.5 py-1.5 rounded-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-emerald-400" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.2 38.3 30 38.3 54.2v147c0 99.2-73.4 187.8-167.5 222.6L256 512l-72.5-25.4C89.4 451.8 16 363.2 16 264V137c0-24.2 16.3-45 38.3-54.2L242.6 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C325 418.2 384 350.8 384 264V137.4L256 66.8z"/></svg>
-        Bienestar Natural desde Adentro
+        Efectivo desde la primera toma
       </div>
 
       <h1 class="font-display text-2xl sm:text-3xl font-bold leading-snug tracking-tight text-amber-400">
@@ -460,6 +460,7 @@
          height="1422"
          onerror="this.style.display='none'; document.getElementById('product-img-placeholder').style.display='flex';"
          class="absolute inset-0 w-full h-full object-cover">
+    <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:80px;z-index:2;pointer-events:none;background:linear-gradient(to bottom,#dff3e7 0%,rgba(223,243,231,.9) 20%,rgba(223,243,231,.55) 45%,rgba(223,243,231,.2) 75%,rgba(223,243,231,0) 100%)"></div>
     <div id="product-img-placeholder" class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-700 to-emerald-900 text-white text-center px-4">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-3xl opacity-70" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
       <span class="text-xs font-semibold opacity-80">Sube aqu&iacute; la foto del producto<br>(hero-producto-fibra-fix.jpg)</span>
@@ -854,18 +855,17 @@
   </script>
 
   <!-- Impact Banner (franja de ancho completo, no tarjeta) -->
-  <div class="w-full h-8 sm:h-12" style="background-image: linear-gradient(to bottom, #dff3e7 0%, #dff3e7 15%, rgba(223,243,231,0) 88%, rgba(223,243,231,0) 100%), linear-gradient(to right, #065f46, #064e3b, #0f172a);"></div>
-  <section class="bg-gradient-to-r from-emerald-800 via-emerald-900 to-slate-900 text-white py-10 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-      <div class="space-y-2">
-        <span class="text-amber-400 font-extrabold text-xs uppercase tracking-wider">
+  <section class="px-4 sm:px-6" style="padding-top:0;padding-bottom:22px;background-image: linear-gradient(to bottom, #dff3e7 0%, #f7ecd3 28%, #f7ecd3 100%);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left" style="gap:12px">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span class="font-extrabold text-xs uppercase tracking-wider" style="color:#c2410c">
           &#9889; SIENTE LA DIFERENCIA EN 7 D&Iacute;AS
         </span>
-        <h3 class="text-2xl sm:text-3xl font-black text-white">&iquest;Listo para recuperar tu ligereza intestinal?</h3>
-        <p class="text-slate-300 text-xs sm:text-sm">Solicita hoy tu Fibra Fix&reg; con Pago Contra Entrega y Env&iacute;o Gratuito.</p>
+        <h3 class="font-black" style="color:#064e3b;font-size:clamp(1.4rem,5.6vw,2rem);line-height:1.12;letter-spacing:-0.3px;margin:0">&iquest;Listo para recuperar tu ligereza intestinal?</h3>
+        <p class="text-xs sm:text-sm" style="color:#14532d;font-weight:600">Solicita hoy tu Fibra Fix&reg; con Pago Contra Entrega y Env&iacute;o Gratuito.</p>
       </div>
 
-      <button onclick="document.getElementById('order-form').scrollIntoView({behavior:'smooth'})" class="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-slate-950 font-black text-sm sm:text-base px-8 py-4 rounded-2xl shadow-xl transition-all transform hover:-translate-y-0.5 whitespace-nowrap uppercase tracking-wider flex items-center gap-2 flex-shrink-0 cursor-pointer border-0">
+      <button onclick="var t=document.getElementById('pricing');t.scrollIntoView({behavior:'smooth'});setTimeout(function(){t.scrollIntoView({behavior:'smooth'})},900)" class="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-slate-950 font-black text-sm sm:text-base px-8 py-4 rounded-2xl shadow-xl transition-all transform hover:-translate-y-0.5 whitespace-nowrap uppercase tracking-wider flex items-center gap-2 flex-shrink-0 cursor-pointer border-0" style="background-image: linear-gradient(to right, #f6b73c, #e8a022); color:#052e1f; padding:11px 24px; font-size:0.85rem;">
         <span>PIDE AHORA CON OFERTAS</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </button>
@@ -873,8 +873,7 @@
   </section>
 
   <!-- Usage Instructions -->
-  <div class="w-full h-8 sm:h-12" style="background-image: linear-gradient(to bottom, rgba(247,236,211,0) 0%, rgba(247,236,211,0) 12%, #f7ecd3 88%, #f7ecd3 100%), linear-gradient(to right, #065f46, #064e3b, #0f172a);"></div>
-  <section class="fruit-pattern-bg bg-[#f7ecd3] pt-12 pb-8 px-4 relative overflow-hidden cv-auto" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='130' viewBox='0 0 260 130'%3E%3Cg transform='rotate(-14 130 65)' opacity='0.75'%3E%3Ctext x='8' y='82' font-family='Poppins, Arial, sans-serif' font-weight='900' font-size='34' letter-spacing='-1'%3E%3Ctspan fill='%2316a34a'%3EFibra%3C/tspan%3E%3Ctspan fill='%23f97316'%3EFix%3C/tspan%3E%3C/text%3E%3Cpath d='M100 42 Q106 30 118 32 Q114 44 100 42 Z' fill='%2316a34a'/%3E%3C/g%3E%3C/svg%3E&quot;); background-repeat: repeat;">
+  <section class="fruit-pattern-bg bg-[#f7ecd3] pt-12 pb-8 px-4 relative overflow-hidden cv-auto" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='130' viewBox='0 0 260 130'%3E%3Cg transform='rotate(-14 130 65)' opacity='0.28'%3E%3Ctext x='8' y='82' font-family='Poppins, Arial, sans-serif' font-weight='900' font-size='34' letter-spacing='-1'%3E%3Ctspan fill='%2316a34a'%3EFibra%3C/tspan%3E%3Ctspan fill='%23f97316'%3EFix%3C/tspan%3E%3C/text%3E%3Cpath d='M100 42 Q106 30 118 32 Q114 44 100 42 Z' fill='%2316a34a'/%3E%3C/g%3E%3C/svg%3E&quot;); background-repeat: repeat;">
     <div class="max-w-md mx-auto text-center relative z-10">
       <span class="text-brand-600 font-bold text-xs uppercase tracking-wider bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm">
         &#129348; PREPARACI&Oacute;N R&Aacute;PIDA EN 1 MINUTO
@@ -882,10 +881,10 @@
       <h2 class="text-2xl font-extrabold text-slate-900 mt-3 mb-6">&iquest;C&oacute;mo consumir Fibra Fix&reg;?</h2>
 
       <div class="max-w-xs mx-auto">
-        <div class="flex items-center justify-between mb-2 px-1">
-          <div class="usage-icon flex-none w-9 h-9 flex items-center justify-center text-2xl transition-transform duration-500" data-i="0">&#129348;</div>
-          <div class="usage-icon flex-none w-9 h-9 flex items-center justify-center text-2xl transition-transform duration-500" data-i="1">&#129380;</div>
-          <div class="usage-icon flex-none w-9 h-9 flex items-center justify-center text-2xl transition-transform duration-500" data-i="2">&#9989;</div>
+        <div class="flex items-center justify-between px-1" style="margin-bottom:14px">
+          <div class="usage-icon flex-none w-9 h-9 flex items-center justify-center text-2xl transition-transform duration-500" style="width:24px;height:44px;font-size:2.3rem;line-height:1;filter:saturate(1.25) drop-shadow(0 2px 2px rgba(0,0,0,.2))" data-i="0">&#129348;</div>
+          <div class="usage-icon flex-none w-9 h-9 flex items-center justify-center text-2xl transition-transform duration-500" style="width:24px;height:44px;font-size:2.3rem;line-height:1;filter:saturate(1.25) drop-shadow(0 2px 2px rgba(0,0,0,.2))" data-i="1">&#129380;</div>
+          <div class="usage-icon flex-none w-9 h-9 flex items-center justify-center text-2xl transition-transform duration-500" style="width:24px;height:44px;font-size:2.3rem;line-height:1;filter:saturate(1.25) drop-shadow(0 2px 2px rgba(0,0,0,.2))" data-i="2">&#9989;</div>
         </div>
         <div class="relative flex items-center justify-between mb-3 px-1">
           <div class="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 bg-slate-200 rounded-full"></div>
@@ -932,8 +931,8 @@
         }
       });
       icons.forEach((ic, idx) => {
-        ic.style.transform = idx === i ? 'scale(1.25)' : 'scale(1)';
-        ic.style.opacity = idx === i ? '1' : '0.4';
+        ic.style.transform = idx === i ? 'scale(1.12)' : 'scale(1)';
+        ic.style.opacity = idx === i ? '1' : '0.75';
       });
     }
     renderUsageStep(0);
@@ -1657,10 +1656,8 @@
       if (isPopupSilentHour()) {
         return msUntilNextActiveWindow();
       }
-      // 7am - 10pm: cada 1 o 2 minutos, al azar
-      const minutesOptions = [1, 2];
-      const minutes = minutesOptions[Math.floor(Math.random() * minutesOptions.length)];
-      return minutes * 60 * 1000;
+      // 7am - 10pm: cada 1 minuto
+      return 60 * 1000;
     }
 
     async function showPurchasePopup() {
