@@ -839,19 +839,16 @@
     })();
 
     (function () {
-      // Las dos primeras (linaza y la siguiente) cargan de inmediato: la primera ya se ve en pantalla.
-      benefitsImgsOn = true;
-      loadBenefitSlide(0); loadBenefitSlide(1);
-      // El resto se pide escalonado, poco despues de que termine de cargar la pagina.
-      function rest() {
-        var i = 2, total = filteredBenefits.length;
+      function start() {
+        benefitsImgsOn = true;
+        var i = 0, total = filteredBenefits.length;
         (function next() {
           if (i >= total) return;
           loadBenefitSlide(i++);
           setTimeout(next, 400);
         })();
       }
-      function go() { setTimeout(rest, 2000); }
+      function go() { setTimeout(start, 2000); }
       if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
     })();
 
@@ -949,17 +946,10 @@
   <div class="w-full h-8 sm:h-12" style="background: linear-gradient(to bottom, #f7ecd3 0%, #f7ecd3 12%, #ffe9c7 88%, #ffe9c7 100%);"></div>
   <div class="w-full relative isolate overflow-hidden animated-gradient-bg cv-auto" style="background-image: linear-gradient(120deg, #ffe9c7, #ffe3bf, #ffd9a8, #ffe3bf);">
   <h2 style="text-align:center;padding:22px 16px 10px;margin:0;font-weight:900;color:#0f3d26;font-size:clamp(1.3rem,5.5vw,1.8rem);line-height:1.15;position:relative;z-index:10">Qué dicen nuestros <span style="color:#d9480f">clientes</span></h2>
-  <p style="text-align:center;margin:0;padding:0 16px;font-size:.82rem;font-weight:700;color:#3d5a47;position:relative;z-index:10">Usa las flechas para ver m&aacute;s testimonios &darr;</p>
   <div class="relative w-full z-10" style="padding:6px 16px 0;">
       <div id="testimonialsSlider" class="relative overflow-hidden mx-auto"
            style="width:min(100%,380px);aspect-ratio:9/16;background:#fff;border:8px solid #fff;border-radius:28px;box-shadow:0 0 0 3px #fbbf24,0 22px 45px -12px rgba(120,53,15,.4);">
-        <div class="testimonial-slide absolute inset-0 transition-opacity duration-500" style="background:#000;border-radius:18px;overflow:hidden">
-          <video id="testimonialVideo" controls muted loop playsinline preload="none" poster="./images/testimonio-video.jpg" class="w-full h-full object-cover" style="border-radius:18px;background:#000">
-            <source src="./images/testimonio-video.mp4" type="video/mp4">
-          </video>
-          <button id="testimonialSound" type="button" aria-label="Activar sonido" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:5;background:rgba(0,0,0,.68);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:800;display:none;cursor:pointer;white-space:nowrap">&#128266; Toca para activar sonido</button>
-        </div>
-        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-500">
+        <div class="testimonial-slide absolute inset-0 transition-opacity duration-500">
           <img src="./images/Screenshot-20260727-192722_1789935622328.jpg" alt="Testimonio cliente 1" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" width="720" height="1280" class="w-full h-full object-contain" style="border-radius:18px">
           <div class="hidden absolute inset-0 flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 text-center px-4">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="text-2xl opacity-60" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-96-144zM176 128a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
@@ -1026,7 +1016,6 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor" style="display:inline-block;width:0.85em;height:0.85em;vertical-align:-0.125em"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
     </button>
     <div class="flex justify-center gap-2" id="testimonialDots">
-      <span class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors"></span>
       <span class="w-2.5 h-2.5 rounded-full bg-brand-500 transition-colors"></span>
       <span class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors"></span>
       <span class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors"></span>
@@ -1046,53 +1035,19 @@
 
   <script>
     let testimonialIdx = 0;
-    let testimonialInView = false;
-    function autoVideo() {
-      const v = document.getElementById('testimonialVideo');
-      if (!v) return;
-      if (testimonialInView && testimonialIdx === 0) { const p = v.play(); if (p && p.catch) p.catch(function () {}); }
-      else v.pause();
-    }
     function showTestimonial(i) {
       const slides = document.querySelectorAll('#testimonialsSlider .testimonial-slide');
       const dots = document.querySelectorAll('#testimonialDots span');
       if (!slides.length) return;
       testimonialIdx = (i + slides.length) % slides.length;
-      slides.forEach((s, idx) => {
-        const on = idx === testimonialIdx;
-        s.style.opacity = on ? '1' : '0';
-        s.style.pointerEvents = on ? 'auto' : 'none';
-        const v = s.querySelector('video');
-        if (v && !on) v.pause();
-      });
+      slides.forEach((s, idx) => { s.style.opacity = idx === testimonialIdx ? '1' : '0'; });
       dots.forEach((d, idx) => {
         d.classList.toggle('bg-brand-500', idx === testimonialIdx);
         d.classList.toggle('bg-slate-300', idx !== testimonialIdx);
       });
-      autoVideo();
     }
     function changeTestimonial(dir) { showTestimonial(testimonialIdx + dir); }
     showTestimonial(0);
-
-    (function () {
-      var box = document.getElementById('testimonialsSlider');
-      var v = document.getElementById('testimonialVideo');
-      var b = document.getElementById('testimonialSound');
-      if (!box || !v) return;
-      function sync() { if (b) b.style.display = (!v.paused && v.muted) ? 'block' : 'none'; }
-      ['play', 'pause', 'volumechange', 'ended'].forEach(function (e) { v.addEventListener(e, sync); });
-      if (b) b.addEventListener('click', function () {
-        v.muted = false; v.currentTime = 0;
-        var p = v.play(); if (p && p.catch) p.catch(function () {});
-        sync();
-      });
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (en) {
-          testimonialInView = en[0].isIntersecting;
-          autoVideo();
-        }, { threshold: 0.6 }).observe(box);
-      }
-    })();
   </script>
 
   <!-- Mini sección: Empieza en 4 pasos -->
