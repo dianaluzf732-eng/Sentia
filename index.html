@@ -449,6 +449,33 @@
     </div>
   </section>
 
+  <!-- Video corto: inflamacion (se reproduce solo, en silencio, al verlo) -->
+  <div class="px-4 pb-10" style="max-width:520px;margin:0 auto">
+    <div style="aspect-ratio:640/604;background:#0b1020;border-radius:20px;overflow:hidden;box-shadow:0 10px 28px rgba(6,78,59,.2)">
+      <video id="inflamacionVideo" muted loop playsinline preload="none" data-poster="./images/video-inflamacion.jpg?v=1" aria-label="No es grasa, es inflamación" style="width:100%;height:100%;object-fit:cover;display:block">
+        <source src="./images/video-inflamacion.mp4?v=1" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var v = document.getElementById('inflamacionVideo');
+      if (!v) return;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function setPoster() { if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster; }
+      if (!('IntersectionObserver' in window)) { setPoster(); v.controls = true; return; }
+      var near = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { near.disconnect(); setPoster(); }
+      }, { rootMargin: '1200px 0px' });
+      near.observe(v);
+      if (reduce) { v.controls = true; return; }
+      new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      }, { threshold: 0.4 }).observe(v);
+    })();
+  </script>
+
   <!-- Producto Fibra Fix (imagen 9:16 de ancho completo) -->
   <div class="w-full relative aspect-[9/16] sm:aspect-[21/9] overflow-hidden">
     <img id="product-jar-img"
