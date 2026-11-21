@@ -1660,7 +1660,7 @@
                 </div>
               </div>
               <div>
-                <span class="font-black text-slate-900 block text-sm">Domicilio (Casa / Trabajo)</span>
+                <span class="font-black text-slate-900 block text-sm">Casa o trabajo</span>
                 <span class="ff-desc text-xs text-slate-600 mt-0.5 block">Entrega directa en tu puerta sin costo adicional</span>
               </div>
             </label>
@@ -1677,7 +1677,7 @@
                 </div>
               </div>
               <div>
-                <span class="font-black text-slate-900 block text-sm">Oficina Interrapid&iacute;simo</span>
+                <span class="font-black text-slate-900 block text-sm">Recoger en oficina Interrapid&iacute;simo</span>
                 <span class="ff-desc text-xs text-slate-600 mt-0.5 block">Recoges y pagas en la oficina de tu ciudad</span>
               </div>
             </label>
@@ -2038,7 +2038,7 @@
       if (v('phone')) lineas.push('Tel\u00e9fono: ' + v('phone'));
       if (v('department')) lineas.push('Departamento: ' + v('department'));
       if (v('city')) lineas.push('Ciudad: ' + v('city'));
-      if (v('address')) lineas.push('Direcci\u00f3n / Sede: ' + v('address'));
+      if (v('address')) lineas.push('Direcci\u00f3n de oficina: ' + v('address'));
       if (paquete) lineas.push('Pedido: ' + paquete);
       window.open('https://wa.me/573151582163?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
       return false;
@@ -2086,7 +2086,7 @@
       const label = document.getElementById('addressLabel');
       const input = document.getElementById('address');
       if (isOffice && label && input) {
-        label.textContent = "Direcci\u00f3n / Sede Oficina Interrapid\u00edsimo:";
+        label.textContent = "Direcci\u00f3n de oficina Interrapid\u00edsimo:";
         input.placeholder = "Ej. Sede Principal Calle 10 # 5-20 o Nombre de la Sede";
       } else if (label && input) {
         label.textContent = "Direcci\u00f3n exacta y barrio:";
