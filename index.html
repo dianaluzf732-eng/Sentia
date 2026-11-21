@@ -1641,57 +1641,14 @@
         </div>
       </div>
 
-        <!-- Modern D1-Style Selection Cards for Delivery Type -->
-        <div>
-          <label class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
-            Tipo de entrega
-          </label>
-          <div class="grid grid-cols-2 gap-2.5">
-            
-            <!-- Card 1: Domicilio -->
-            <label id="card-domicilio" onclick="selectDeliveryCard('domicilio')" class="delivery-card relative bg-emerald-50/70 border-2 border-brand-500 p-4 rounded-2xl cursor-pointer shadow-sm transition-all hover:shadow-md flex flex-col justify-between">
-              <input type="radio" name="deliveryType" value="Direcci&oacute;n Domicilio" checked class="sr-only">
-              <div class="flex items-center justify-between mb-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
-                </div>
-                <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs check-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                </div>
-              </div>
-              <div>
-                <span class="font-black text-slate-900 block text-sm">Domicilio (Casa / Trabajo)</span>
-                <span class="ff-desc text-xs text-slate-600 mt-0.5 block">Entrega directa en tu puerta sin costo adicional</span>
-              </div>
-            </label>
-
-            <!-- Card 2: Oficina Interrapid&iacute;simo -->
-            <label id="card-oficina" onclick="selectDeliveryCard('oficina')" class="delivery-card relative bg-slate-50 border-2 border-slate-200 p-4 rounded-2xl cursor-pointer shadow-sm transition-all hover:shadow-md flex flex-col justify-between">
-              <input type="radio" name="deliveryType" value="Oficina Interrapid&iacute;simo" class="sr-only">
-              <div class="flex items-center justify-between mb-3">
-                <div class="w-10 h-10 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center text-lg shadow-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M48 0C21.5 0 0 21.5 0 48V464c0 26.5 21.5 48 48 48h96V432c0-26.5 21.5-48 48-48s48 21.5 48 48v80h96c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H48zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm112-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM80 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V112zM272 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16z"/></svg>
-                </div>
-                <div class="w-6 h-6 rounded-full bg-slate-200 text-transparent flex items-center justify-center text-xs check-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                </div>
-              </div>
-              <div>
-                <span class="font-black text-slate-900 block text-sm">Oficina Interrapid&iacute;simo</span>
-                <span class="ff-desc text-xs text-slate-600 mt-0.5 block">Recoges y pagas en la oficina de tu ciudad</span>
-              </div>
-            </label>
-
-          </div>
-          <div id="officeNotice" role="note" style="display:none;margin-top:10px;background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;padding:10px 12px;color:#92400e;font-size:.78rem;font-weight:700;line-height:1.4;">
-            &#128230; <strong style="font-weight:900;">Env&iacute;o a oficina sujeto a verificaci&oacute;n.</strong> Solo enviamos a oficina a clientes con buen historial en Interrapid&iacute;simo o que pidan por primera vez.
-          </div>
-        </div>
+        <!-- Tipo de entrega: solo domicilio (valor oculto, el formulario lo lee al enviar) -->
+        <input type="radio" name="deliveryType" value="Direcci&oacute;n Domicilio" checked class="sr-only" aria-hidden="true" tabindex="-1">
 
         <div id="addressGroup">
           <label id="addressLabel" for="address" class="block text-xs font-extrabold text-slate-800 uppercase mb-2">
             Direcci&oacute;n exacta y barrio
           </label>
+          <p class="text-[11px] text-slate-500 mb-2">Domicilio en casa o trabajo. No se aceptan direcciones de oficinas de transportadoras sin aprobaci&oacute;n previa.</p>
           <input type="text" id="address" placeholder="Ej. Calle 45 # 22 - 10 Barrio Centro" required class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-500 focus:outline-none">
         </div>
 
@@ -1710,6 +1667,14 @@
           <span id="submitIcon" class="text-amber-300 text-xl animate-bounce"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="display:inline-block;width:1em;height:1em;vertical-align:-0.125em"><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32V288 272 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg></span>
           <span id="submitText">&iexcl;COMPRAR AHORA Y PAGAR AL RECIBIR!</span>
         </button>
+
+      <div id="officeNotice" role="note" style="margin-top:12px;background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;padding:12px;color:#92400e;font-size:.78rem;font-weight:700;line-height:1.4;text-align:center;">
+        &#128230; <strong style="font-weight:900;">&iquest;Prefieres recibir en oficina Interrapid&iacute;simo?</strong><br>
+        Solo se aprueba a clientes con excelente historial de entregas. Llena tus datos arriba y toca el bot&oacute;n para que lo validemos:
+        <button type="button" id="officeWaLink" onclick="openOfficeWhatsApp(event)" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;background:#25d366;color:#fff;font-weight:900;font-size:.85rem;border:0;border-radius:10px;padding:11px 12px;cursor:pointer;">
+          &#128172; Solicitar env&iacute;o a oficina por WhatsApp
+        </button>
+      </div>
 
         <p class="text-center text-[11px] text-slate-400">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="text-brand-600" style="display:inline-block;width:0.8em;height:0.8em;vertical-align:-0.1em;margin-right:3px;"><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>Tus datos est&aacute;n protegidos y se usan &uacute;nicamente para la entrega. <button type="button" onclick="openPrivacyModal()" style="background:none; border:none; color:inherit; font-weight:inherit; cursor:pointer; font-size:inherit; text-decoration:none; padding:0; display:inline;">Pol&iacute;tica de Privacidad</button>.</p>
@@ -2019,6 +1984,22 @@
       if (totalEl && price) {
         totalEl.textContent = `$${parseInt(price).toLocaleString('es-CO')}`;
       }
+    }
+
+    function openOfficeWhatsApp(e) {
+      e.preventDefault();
+      var v = function(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; };
+      var pk = document.getElementById('packageSelect');
+      var paquete = pk && pk.selectedIndex >= 0 ? pk.options[pk.selectedIndex].text.trim() : '';
+      var lineas = ['Hola, quiero solicitar env\u00edo a oficina Interrapid\u00edsimo. Mis datos:'];
+      if (v('fullName')) lineas.push('Nombre: ' + v('fullName'));
+      if (v('phone')) lineas.push('Tel\u00e9fono: ' + v('phone'));
+      if (v('department')) lineas.push('Departamento: ' + v('department'));
+      if (v('city')) lineas.push('Ciudad: ' + v('city'));
+      if (v('address')) lineas.push('Direcci\u00f3n / Sede: ' + v('address'));
+      if (paquete) lineas.push('Pedido: ' + paquete);
+      window.open('https://wa.me/573151582163?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+      return false;
     }
 
     function selectDeliveryCard(type) {
